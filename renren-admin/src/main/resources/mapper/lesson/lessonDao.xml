@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.lesson.dao.ProLessonDao">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.lesson.entity.ProLessonEntity" id="proLessonMap">
+        <result property="id" column="id"/>
+        <result property="lessonName" column="lesson_name"/>
+        <result property="lessonTime" column="lesson_time"/>
+        <result property="content" column="content"/>
+        <result property="trainer" column="trainer"/>
+        <result property="teachWay" column="teach_way"/>
+    </resultMap>
+    <insert id="insertSelective" parameterType="io.renren.modules.lesson.entity.ProLessonEntity">
+        insert into PRO_LESSON
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lessonName != null">lesson_name,</if>
+            <if test="lessonTime != null">lesson_time,</if>
+            <if test="content != null">content,</if>
+            <if test="trainer != null">trainer,</if>
+            <if test="teachWay != null">teach_way,</if>
+            <if test="id != null">id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lessonName != null">#{lessonName, jdbcType=TIMESTAMP},</if>
+            <if test="lessonTime != null">#{lessonTime, jdbcType=VARCHAR},</if>
+            <if test="content != null">#{content, jdbcType=VARCHAR},</if>
+            <if test="trainer != null">#{trainer, jdbcType=VARCHAR},</if>
+            <if test="teachWay != null">#{teachWay, jdbcType=VARCHAR},</if>
+            <if test="id != null">#{id, jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+
+</mapper>
