@@ -1,6 +1,9 @@
 package io.renren.modules.sys.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -16,6 +19,9 @@ import io.renren.modules.sys.service.HotelService;
 @Service("hotelService")
 public class HotelServiceImpl extends ServiceImpl<HotelDao, HotelEntity> implements HotelService {
 
+    @Autowired
+    HotelDao dao;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         Page<HotelEntity> page = this.selectPage(
@@ -24,6 +30,12 @@ public class HotelServiceImpl extends ServiceImpl<HotelDao, HotelEntity> impleme
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<HotelEntity> hotel() {
+
+        return dao.hotel();
     }
 
 }

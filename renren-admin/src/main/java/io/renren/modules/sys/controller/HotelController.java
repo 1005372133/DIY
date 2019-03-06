@@ -1,16 +1,14 @@
 package io.renren.modules.sys.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.common.validator.ValidatorUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.modules.sys.entity.HotelEntity;
 import io.renren.modules.sys.service.HotelService;
@@ -35,12 +33,21 @@ public class HotelController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     @RequiresPermissions("sys:hotel:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = hotelService.queryPage(params);
 
         return R.ok().put("page", page);
+    }
+    /**
+     * 列表
+     */
+    @GetMapping("/hotel")
+    public R hotel(){
+        List<HotelEntity> page = hotelService.hotel();
+
+        return R.ok().put("hotel", page);
     }
 
 

@@ -46,8 +46,10 @@ var vm = new Vue({
 		showList: true,
 		title: null,
 		view: {},
-        dict: {},
-        Lists:{}
+        dict: {},//字典
+        Lists:{},//字典接受
+		hotel:{},//酒店
+		Hotel:{},
 	},
 	methods: {
 		query: function () {
@@ -58,6 +60,7 @@ var vm = new Vue({
 			vm.title = "新增";
 			vm.view = {};
             this.getDict()
+			this.getHotel()
 		},
 		update: function (event) {
 			var id = getSelectedRow();
@@ -80,6 +83,26 @@ var vm = new Vue({
                 success: function (r) {
                     if (r.code === 0) {
                         vm.Lists = r.dict;
+                    } else {
+                        alert(r.msg);
+                    }
+                },
+                error: function () {
+                }
+            });
+        },
+        //新增时获取数据	课程信息
+        getHotel: function () {
+            var url = baseURL + "sys/hotel/hotel";
+            $.ajax({
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                data: vm.hotel,
+                success: function (r) {
+                    if (r.code === 0) {
+                        vm.hotel = r.hotel;
+                        console.log(r.hotel)
                     } else {
                         alert(r.msg);
                     }

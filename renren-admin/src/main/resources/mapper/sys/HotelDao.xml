@@ -13,5 +13,11 @@
         <result property="place" column="place"/>
     </resultMap>
 
+    <sql id="Base_Column_List">
+        id, hotel_name,hotel_type,price,remarks,place
+    </sql>
+    <select id="hotel" resultMap="hotelMap">
+        select <include refid="Base_Column_List"/> from hotel
+    </select>
 
 </mapper>
