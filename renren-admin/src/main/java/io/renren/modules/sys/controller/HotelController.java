@@ -52,10 +52,10 @@ public class HotelController {
 
 
     /**
-     * 信息
+     * 信息//修改使用
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("sys:hotel:info")
+    //@RequiresPermissions("sys:hotel:info")
     public R info(@PathVariable("id") Integer id){
         HotelEntity hotel = hotelService.selectById(id);
 

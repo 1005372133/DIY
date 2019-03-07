@@ -48,7 +48,7 @@ public class ViewController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("sys:view:info")
+    //@RequiresPermissions("sys:view:info")
     public R info(@PathVariable("id") Integer id){
         ViewEntity view = viewService.selectById(id);
 

@@ -3,15 +3,16 @@ $(function () {
         url: baseURL + 'sys/view/list',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true , hidden:true},
+            { label: '景点名称', name: 'name', index: 'name', width: 80 , templet: '#name', event: 'name-event'},
 			{ label: '地区', name: 'area', index: 'area', width: 80 },
 			{ label: '交通方式', name: 'transport', index: 'transport', width: 80 },
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
 			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
-			{ label: '景点名称', name: 'name', index: 'name', width: 80 },
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 },
-			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 }
+			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 },
+            {fixed: 'right', width: 120, align: 'center', label: '操作', unresize: true, toolbar: '#barDemo'}
         ],
 		viewrecords: true,
         height: 385,

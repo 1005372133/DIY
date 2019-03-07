@@ -3,7 +3,7 @@ $(function () {
         url: baseURL + 'sys/hotel/list',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true , hidden:true},
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
 			{ label: '酒店类型', name: 'hotelType', index: 'hotel_type', width: 80 },
 			{ label: '价格', name: 'price', index: 'price', width: 80 },
@@ -42,7 +42,11 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		hotel: {}
+        view: {},
+        dict: {},//字典
+        Lists:{},//字典接受
+        hotel:{},//酒店
+        Hotel:{},
 	},
 	methods: {
 		query: function () {
@@ -52,7 +56,26 @@ var vm = new Vue({
 			vm.showList = false;
 			vm.title = "新增";
 			vm.hotel = {};
+            this.getDict();
 		},
+        getDict: function () {
+            var url = baseURL + "sys/dict/selectToAdd";
+            $.ajax({
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                data: vm.dict,
+                success: function (r) {
+                    if (r.code === 0) {
+                        vm.Lists = r.dict;
+                    } else {
+                        alert(r.msg);
+                    }
+                },
+                error: function () {
+                }
+            });
+        },
 		update: function (event) {
 			var id = getSelectedRow();
 			if(id == null){
