@@ -1,5 +1,7 @@
 package io.renren.modules.sys.service.impl;
 
+import io.renren.common.utils.Constant;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +26,15 @@ public class HotelServiceImpl extends ServiceImpl<HotelDao, HotelEntity> impleme
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String hotelName = (String)params.get("hotelName");
+        String hotelType = (String)params.get("hotelType");
         Page<HotelEntity> page = this.selectPage(
                 new Query<HotelEntity>(params).getPage(),
                 new EntityWrapper<HotelEntity>()
+                        .like(StringUtils.isNotBlank(hotelName),"hotelName", hotelName)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
+                        .like(StringUtils.isNotBlank(hotelType),"hotelType", hotelType)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
         );
 
         return new PageUtils(page);

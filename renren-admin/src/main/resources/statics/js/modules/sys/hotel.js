@@ -47,6 +47,10 @@ var vm = new Vue({
         Lists:{},//字典接受
         hotel:{},//酒店
         Hotel:{},
+        q:{
+            hotelName: null,
+            hotelType: null
+        },
 	},
 	methods: {
 		query: function () {
@@ -136,7 +140,8 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
+                postData:{'hotelName': vm.q.hotelName,  hotelType: vm.q.hotelType},
                 page:page
             }).trigger("reloadGrid");
 		}

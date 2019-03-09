@@ -1,5 +1,7 @@
 package io.renren.modules.sys.service.impl;
 
+import io.renren.common.utils.Constant;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -18,9 +20,15 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String hotelName = (String)params.get("hotelName");
+        String price = (String)params.get("price");
         Page<ViewEntity> page = this.selectPage(
                 new Query<ViewEntity>(params).getPage(),
                 new EntityWrapper<ViewEntity>()
+                        .like(StringUtils.isNotBlank(hotelName),"hotelName", hotelName)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
+                        .like(StringUtils.isNotBlank(price),"price", price)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
         );
 
         return new PageUtils(page);

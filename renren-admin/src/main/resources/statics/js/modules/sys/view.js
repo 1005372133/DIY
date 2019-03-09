@@ -18,7 +18,7 @@ $(function () {
         height: 385,
         rowNum: 10,
 		rowList : [10,30,50],
-        rownumbers: true, 
+        rownumbers: true,
         rownumWidth: 25, 
         autowidth:true,
         multiselect: true,
@@ -51,6 +51,10 @@ var vm = new Vue({
         Lists:{},//字典接受
 		hotel:{},//酒店
 		Hotel:{},
+        q:{
+            hotelName: null,
+            price: null
+        },
 	},
 	methods: {
 		query: function () {
@@ -162,7 +166,8 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
+                postData:{'hotelName': vm.q.hotelName,  price: vm.q.price},
                 page:page
             }).trigger("reloadGrid");
 		}
