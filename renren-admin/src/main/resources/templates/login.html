@@ -65,37 +65,37 @@
         <!-- /.col -->
       </div>
     <!-- /.social-auth-links -->
-      <div id="regist" style="display: none;">
-          <form class="form-horizontal">
-               <div class="form-group">
-               <!--   -<div class="form-group">
-                       <div class="col-sm-2 control-label">账号</div>
-                       <span class="label label-success" style="vertical-align: bottom;">{{user.username}}</span>
-                   </div>
-                   <div class="form-group">
-                       <div class="col-sm-2 control-label">原密码</div>
-                       <div class="col-sm-10">
-                           <input type="password" class="form-control" v-model="password" placeholder="原密码"/>
-                       </div>
-                   </div>
-                   <div class="form-group">
-                       <div class="col-sm-2 control-label">新密码</div>
-                       <div class="col-sm-10">
-                           <input type="text" class="form-control" v-model="newPassword" placeholder="新密码"/>
-                       </div>
-                   </div>-->
-                   <div class="form-group">
-                       <div class="col-sm-2 control-label">用户名</div>
-                       <div class="col-sm-10">
-                           <input type="text" class="form-control" v-model="username" placeholder="用户名"/>
-                       </div>
-                   </div>
-               </div>
-          </form>
-          <h1>111</h1>
-      </div>
+
   </div>
   <!-- /.login-box-body -->
+</div>
+<div id="regist" style="display: none;">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">用户名</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="user.username" placeholder="登录账号"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">密码</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="user.password" placeholder="密码"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">邮箱</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="user.email" placeholder="邮箱"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">手机号</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="user.mobile" placeholder="手机号"/>
+            </div>
+        </div>
+    </form>
 </div>
 <!-- /.login-box -->
 <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
@@ -144,15 +144,14 @@ var vm = new Vue({
 				}
 			});
 		}, updatePassword: function(){
-            parent.location.href ='404.html';
-           /* layer.open({
-                type: 2,
+            layer.open({
+                type: 1,
                 skin: 'layui-layer-molv',
-                title: "注册",
-                area: ['550px', '270px'],
+                title: "注册用户",
+                area: ['600px', '400px'],
                 shadeClose: false,
                 content: jQuery("#regist"),
-                btn: ['提交','取消'],
+                btn: ['注册','取消'],
                 btn1: function (index) {
                     var data = "password="+vm.password+"&newPassword="+vm.newPassword;
                     $.ajax({
@@ -172,7 +171,7 @@ var vm = new Vue({
                         }
                     });
                 }
-            });*/
+            });
         }
 	}
 });
