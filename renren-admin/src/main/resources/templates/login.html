@@ -114,7 +114,15 @@ var vm = new Vue({
 		captcha: '',
 		error: false,
 		errorMsg: '',
-		src: 'captcha.jpg'
+		src: 'captcha.jpg',
+        user:{
+            status:1,
+            deptId:null,
+            email:null,
+            deptName:null,
+            mobile:null,
+            roleIdList:[]
+        }
 	},
 	beforeCreate: function(){
 		if(self != top){
@@ -144,6 +152,26 @@ var vm = new Vue({
 				}
 			});
 		}, updatePassword: function(){
+
+            var data = "username="+"admin"+"&password="+"admin";
+            $.ajax({
+                type: "POST",
+                url: "sys/login",
+                data: data,
+                dataType: "json",
+                success: function(result){
+                    if(result.code == 0){//登录成功
+                        console.log('登陆成功')
+                    }else{
+                        vm.error = true;
+                        vm.errorMsg = result.msg;
+
+                        vm.refreshCode();
+                    }
+                }
+            });
+
+
             layer.open({
                 type: 1,
                 skin: 'layui-layer-molv',
@@ -153,18 +181,32 @@ var vm = new Vue({
                 content: jQuery("#regist"),
                 btn: ['注册','取消'],
                 btn1: function (index) {
-                    var data = "password="+vm.password+"&newPassword="+vm.newPassword;
                     $.ajax({
-                        type: "POST",
-                        url: "sys/user/password",
-                        data: data,
+                        type: "GET",
+                        url: "sys/user/register",
+                        data: null,
                         dataType: "json",
                         success: function(result){
                             if(result.code == 0){
-                                layer.close(index);
-                                layer.alert('修改成功', function(index){
-                                    location.reload();
+                               console.log('注册成功')
+
+
+                                //执行注册代码
+
+                                $.ajax({
+                                    type: "GET",
+                                    url: "logout",
+                                    data: null,
+                                    dataType: "json",
+                                    success: function(result){
+                                            console.log('推出登陆')
+                                    },
+                                    error: function () {
+                                        console.log('推出登陆')
+                                    }
                                 });
+
+
                             }else{
                                 layer.alert(result.msg);
                             }

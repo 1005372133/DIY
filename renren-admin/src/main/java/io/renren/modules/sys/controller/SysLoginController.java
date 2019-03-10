@@ -28,10 +28,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -75,10 +72,11 @@ public class SysLoginController {
 	@PostMapping(value = "/sys/login")
 	@ApiOperation(value = "登陆")
 	public R login(String username, String password, String captcha) {
-		String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
+		//	暂停使用验证码
+		/*String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
 		if(!captcha.equalsIgnoreCase(kaptcha)){
 			return R.error("验证码不正确");
-		}
+		}*/
 		
 		try{
 			Subject subject = ShiroUtils.getSubject();
@@ -100,7 +98,7 @@ public class SysLoginController {
 	/**
 	 * 退出
 	 */
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	@GetMapping(value = "logout")
 	public String logout() {
 		ShiroUtils.logout();
 		return "redirect:login.html";
