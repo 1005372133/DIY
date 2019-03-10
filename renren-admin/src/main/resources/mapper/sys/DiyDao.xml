@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.renren.modules.sys.dao.DiyDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.sys.entity.DiyEntity" id="DiyMap">
+        <result property="id" column="id"/>
+        <result property="viewId" column="view_id"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+		id,user_id, view_id
+	</sql>
+
+    <insert id="add" parameterType="io.renren.modules.sys.entity.DiyEntity">
+        insert into diy(
+        <include refid="Base_Column_List"/>
+        )
+        values (#{id}, #{userId}, #{viewId})
+    </insert>
+
+</mapper>

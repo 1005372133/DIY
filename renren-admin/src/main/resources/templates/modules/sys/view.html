@@ -28,6 +28,7 @@
 			<#if shiro.hasPermission("sys:view:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
+            <a class="btn btn-primary" @click="diy"><i class="fa fa-plus"></i>&nbsp;收藏</a>
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
