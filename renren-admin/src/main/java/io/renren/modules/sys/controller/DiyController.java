@@ -5,7 +5,6 @@ import io.renren.modules.sys.entity.DiyEntity;
 import io.renren.modules.sys.service.DiyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +30,8 @@ public class DiyController {
      */
     @PostMapping ("/save")
     @ApiOperation(value = "收藏")
-    public R save(@RequestBody DiyEntity diyEntity){
-        diyService.add(diyEntity);
+    public R save(String Viewid ){
+        diyService.add(Viewid);
         return R.ok();
     }
 }

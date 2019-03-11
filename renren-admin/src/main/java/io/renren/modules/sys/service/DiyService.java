@@ -10,6 +10,6 @@ import io.renren.modules.sys.entity.DiyEntity;
  */
 public interface DiyService extends IService<DiyEntity> {
 
-    void add(DiyEntity diyEntity);
+    void add(String  Viewid);
 
 }

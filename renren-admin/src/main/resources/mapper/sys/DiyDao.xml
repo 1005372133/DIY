@@ -15,10 +15,17 @@
 	</sql>
 
     <insert id="add" parameterType="io.renren.modules.sys.entity.DiyEntity">
-        insert into diy(
-        <include refid="Base_Column_List"/>
-        )
-        values (#{id}, #{userId}, #{viewId})
+        insert into diy
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >id,</if>
+            <if test="viewId != null" >view_id,</if>
+            <if test="userId != null" >user_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >#{id},</if>
+            <if test="viewId != null" >#{viewId},</if>
+            <if test="userId != null" >#{userId},</if>
+        </trim>
     </insert>
 
 </mapper>

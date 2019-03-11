@@ -6,31 +6,31 @@ package io.renren.modules.sys.entity;
  * @Description:
  */
 public class DiyEntity {
-    private Integer id;
-    private Integer viewId;
-    private Integer userId;
+    private String id;
+    private String viewId;
+    private String userId;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getViewId() {
+    public String getViewId() {
         return viewId;
     }
 
-    public void setViewId(Integer viewId) {
+    public void setViewId(String viewId) {
         this.viewId = viewId;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 }

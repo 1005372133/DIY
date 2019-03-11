@@ -163,7 +163,9 @@ var vm = new Vue({
                 vm.view = r.view;
             });
 		},
-        diy: function(){},
+        diy: function(){
+
+		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
