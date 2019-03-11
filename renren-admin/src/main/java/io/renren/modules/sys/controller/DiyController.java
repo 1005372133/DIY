@@ -6,10 +6,7 @@ import io.renren.modules.sys.service.DiyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Auther: Administrator
@@ -28,9 +25,9 @@ public class DiyController {
     /**
      * 保存
      */
-    @PostMapping ("/save")
+    @PostMapping ("{Viewid}")
     @ApiOperation(value = "收藏")
-    public R save(String Viewid ){
+    public R save(@PathVariable String Viewid ){
         diyService.add(Viewid);
         return R.ok();
     }

@@ -164,7 +164,27 @@ var vm = new Vue({
             });
 		},
         diy: function(){
-
+            var id = getSelectedRow();
+            if(id == null){
+                return ;
+            }
+            var url="sys/diy/"+id
+            $.ajax({
+                type: "POST",
+                url: baseURL +url,
+                contentType: "application/json",
+                data:	{Viewid:id},
+                success: function (r) {
+                    if (r.code === 0) {
+						console.log(id)
+                    	alert("新增成功")
+                    } else {
+                        alert(r.msg);
+                    }
+                },
+                error: function () {
+                }
+            });
 		},
 		reload: function (event) {
 			vm.showList = true;
