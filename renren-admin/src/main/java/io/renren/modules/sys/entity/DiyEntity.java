@@ -1,5 +1,7 @@
 package io.renren.modules.sys.entity;
 
+import java.util.List;
+
 /**
  * @Auther: Administrator
  * @Date: 2019/3/10 15:47
@@ -9,6 +11,15 @@ public class DiyEntity {
     private String id;
     private String viewId;
     private String userId;
+    private List<ViewEntity> list;
+
+    public List<ViewEntity> getList() {
+        return list;
+    }
+
+    public void setList(List<ViewEntity> list) {
+        this.list = list;
+    }
 
     public String getId() {
         return id;

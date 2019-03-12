@@ -16,6 +16,4 @@
         <result property="remarks" column="Remarks"/>
     </resultMap>
 
-
-
 </mapper>

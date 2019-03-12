@@ -1,5 +1,6 @@
 package io.renren.modules.sys.controller;
 
+import io.renren.common.utils.LoginUserUtil;
 import io.renren.common.utils.R;
 import io.renren.modules.sys.entity.DiyEntity;
 import io.renren.modules.sys.service.DiyService;
@@ -30,5 +31,22 @@ public class DiyController {
     public R save(@PathVariable String Viewid ){
         diyService.add(Viewid);
         return R.ok();
+    }
+
+
+    @PostMapping ("delete/{id}")
+    @ApiOperation(value = "删除")
+    public R delete(@PathVariable String id ){
+        diyService.deleteId(id);
+        return R.ok();
+    }
+
+
+
+    @PostMapping ("selectByDiy")
+    @ApiOperation(value = "查找收藏")
+    public R selectByDiy(){
+        String userId=LoginUserUtil.getUserId();
+        return R.ok().put("diy",diyService.selectByDiy(userId));
     }
 }
