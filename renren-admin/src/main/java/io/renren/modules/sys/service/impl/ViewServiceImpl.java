@@ -2,6 +2,7 @@ package io.renren.modules.sys.service.impl;
 
 import io.renren.common.utils.Constant;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -18,6 +19,9 @@ import io.renren.modules.sys.service.ViewService;
 @Service("viewService")
 public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements ViewService {
 
+    @Autowired
+    ViewDao viewDao;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         String hotelName = (String)params.get("hotelName");
@@ -32,6 +36,11 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public ViewEntity selectId(String id) {
+        return viewDao.selectId(id);
     }
 
 }

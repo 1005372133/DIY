@@ -11,5 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @date 2019-03-06 19:44:52
  */
 public interface ViewDao extends BaseMapper<ViewEntity> {
-	
+
+    ViewEntity selectId(String id);
 }

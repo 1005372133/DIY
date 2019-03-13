@@ -15,5 +15,8 @@
         <result property="picture" column="picture"/>
         <result property="remarks" column="Remarks"/>
     </resultMap>
+    <select id="selectId" resultMap="viewMap" resultType="io.renren.modules.sys.entity.ViewEntity">
+        select * from view where id=#{id}
+    </select>
 
 </mapper>

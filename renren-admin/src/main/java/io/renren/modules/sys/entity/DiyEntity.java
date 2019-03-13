@@ -11,14 +11,14 @@ public class DiyEntity {
     private String id;
     private String viewId;
     private String userId;
-    private List<ViewEntity> list;
+    private ViewEntity viewEntity;
 
-    public List<ViewEntity> getList() {
-        return list;
+    public ViewEntity getViewEntity() {
+        return viewEntity;
     }
 
-    public void setList(List<ViewEntity> list) {
-        this.list = list;
+    public void setViewEntity(ViewEntity viewEntity) {
+        this.viewEntity = viewEntity;
     }
 
     public String getId() {

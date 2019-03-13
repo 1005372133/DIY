@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import io.renren.common.utils.LoginUserUtil;
 import io.renren.modules.sys.dao.DiyDao;
+import io.renren.modules.sys.dao.ViewDao;
 import io.renren.modules.sys.entity.DiyEntity;
 import io.renren.modules.sys.entity.ViewEntity;
 import io.renren.modules.sys.service.DiyService;
@@ -31,6 +32,8 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
 
     @Autowired
     DiyDao diyDao;
+    @Autowired
+    ViewDao viewDao;
 
     @Override
     public void add(String Viewid) {
@@ -48,15 +51,20 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
 
     @Override
     public List<DiyEntity> selectByDiy(String userId) {
-      /*  List<DiyEntity> diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
+        List<DiyEntity> diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
         List<String> list = diyDao.selectUserid(userId);    //      获取该用户下收藏的所有景点
                                                             //依次查询景点
-        for(String id:list){
+        for (int i=0;i<diyEntity.size();i++)
+        {
+          ViewEntity viewEntity=  viewDao.selectById(diyEntity.get(i).getViewId());
+         diyEntity.get(i).setViewEntity(viewEntity);
+        }
+/*        for(String id:list){
 
         }
         diyEntity.get(i).setList();
         return diyEntity1;*/
-      return null;
+      return diyEntity;
     }
 
     @Override
