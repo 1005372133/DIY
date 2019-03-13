@@ -17,5 +17,4 @@ public interface DiyDao extends BaseMapper<DiyEntity> {
 
     List<DiyEntity> selectByDiy(String userId);
 
-    List<String> selectUserid(String userId);
 }

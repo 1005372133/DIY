@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap.min.css">
+    <script src="${request.contextPath}/statics/libs/bootstrap.min.js"></script>
+    <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
+
+    <#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.hotelName" @keyup.enter="query" placeholder="景点名称">
+            </div>
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.price" @keyup.enter="query" placeholder="价格">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+			<#if shiro.hasPermission("sys:view:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:view:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:view:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+            <a class="btn btn-primary" @click="diy"><i class="fa fa-plus"></i>&nbsp;收藏</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">景点名称</div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" v-model="view.name" placeholder=""/>
+                    </div>
+                </div>
+                <div class="col-sm-2 control-label">地区</div>
+                <div class="col-sm-10">
+                <Select v-model="view.area" class="form-control" clearable>
+                    <Option :value="item.value" v-for="item in Lists" :key="item.value" v-if="item.type === 'area'">{{item.value}}</Option>
+                </Select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">交通方式</div>
+                <div class="col-sm-10">
+                    <Select v-model="view.transport" class="form-control" clearable>
+                        <Option :value="item.value" v-for="item in Lists" :key="item.value" v-if="item.type === 'transport'">{{item.value}}</Option>
+                    </Select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">价格</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="view.price" placeholder=""/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">酒店</div>
+                <div class="col-sm-10">
+                   <!-- <input type="text" class="form-control" v-model="view.hotelId" placeholder=""/>-->
+                    <Select v-model="view.hotelId" class="form-control" clearable>
+                        <Option :value="item.id" v-for="item in hotel" :key="item.id">{{item.hotelName}}</Option>
+                    </Select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">酒店名称</div>
+                <div class="col-sm-10">
+                    <!--<input type="text" class="form-control" v-model="view.hotelName" placeholder=""/>-->
+                    <Select v-model="view.hotelName" class="form-control" clearable>
+                        <Option :value="item.hotelName" v-for="item in hotel" :key="item.hotelName">{{item.hotelName}}</Option>
+                    </Select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">图片</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="view.picture" placeholder=""/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">备注</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="view.remarks" placeholder=""/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+</div>
+<script type="text/html" id="barDemo">
+    <a class="btn btn-primary  btn-xs" lay-event="edit">编辑</a>
+</script>
+<script src="${request.contextPath}/statics/js/modules/sys/diy.js?_${.now?long}"></script>
+</body>
+</html>

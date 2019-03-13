@@ -52,23 +52,14 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
     @Override
     public List<DiyEntity> selectByDiy(String userId) {
         List<DiyEntity> diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
-        List<String> list = diyDao.selectUserid(userId);    //      获取该用户下收藏的所有景点
                                                             //依次查询景点
         for (int i=0;i<diyEntity.size();i++)
         {
           ViewEntity viewEntity=  viewDao.selectById(diyEntity.get(i).getViewId());
-         diyEntity.get(i).setViewEntity(viewEntity);
+         diyEntity.get(i).setViewEntity(viewEntity);            //给景点赋值
         }
-/*        for(String id:list){
-
-        }
-        diyEntity.get(i).setList();
-        return diyEntity1;*/
       return diyEntity;
     }
 
-    @Override
-    public List<DiyEntity> selectUserid(String userId) {
-        return null;
-    }
+
 }

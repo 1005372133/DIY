@@ -18,6 +18,5 @@ public interface DiyService extends IService<DiyEntity> {
 
     List<DiyEntity> selectByDiy(String userId);
 
-    List<DiyEntity>selectUserid(String userId);
 
 }

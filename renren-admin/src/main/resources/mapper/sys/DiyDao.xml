@@ -35,7 +35,5 @@
     <select id="selectByDiy" resultMap="DiyMap">
      select  v.id as VID,v.area,v.transport,v.Price,v.hotel_id,v.hotel_name,v.name,v.picture,v.Remarks,d.view_id,d.user_id,d.id from  diy d left join view v  on v.id=d.view_id where user_id=#{userId}
     </select>
-    <select id="selectUserid" resultMap="DiyMap">
-     select  view_id from  diy where user_id=#{userId}
-    </select>
+
 </mapper>
