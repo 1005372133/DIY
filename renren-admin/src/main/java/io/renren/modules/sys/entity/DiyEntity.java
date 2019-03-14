@@ -1,5 +1,9 @@
 package io.renren.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +11,9 @@ import java.util.List;
  * @Date: 2019/3/10 15:47
  * @Description:
  */
-public class DiyEntity {
+@TableName("diy")
+public class DiyEntity  implements Serializable {
+    @TableId
     private String id;
     private String viewId;
     private String userId;

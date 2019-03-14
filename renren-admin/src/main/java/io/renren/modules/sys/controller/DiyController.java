@@ -1,6 +1,7 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.common.utils.LoginUserUtil;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 import io.renren.modules.sys.entity.DiyEntity;
 import io.renren.modules.sys.service.DiyService;
@@ -8,6 +9,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @Auther: Administrator
@@ -43,10 +46,11 @@ public class DiyController {
 
 
 
-    @PostMapping ("selectByDiy")
+    @GetMapping ("selectByDiy")
     @ApiOperation(value = "查找收藏")
-    public R selectByDiy(){
-        String userId=LoginUserUtil.getUserId();
-        return R.ok().put("diy",diyService.selectByDiy(userId));
+    public R selectByDiy(@RequestParam Map<String, Object> params){
+        PageUtils page = diyService.queryPage(params);
+        page.setList(diyService.selectByDiy(LoginUserUtil.getUserId()));
+        return R.ok().put("page",page);
     }
 }

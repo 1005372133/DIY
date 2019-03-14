@@ -1,13 +1,20 @@
 package io.renren.modules.sys.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import io.renren.common.utils.Constant;
 import io.renren.common.utils.LoginUserUtil;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.Query;
 import io.renren.modules.sys.dao.DiyDao;
 import io.renren.modules.sys.dao.ViewDao;
 import io.renren.modules.sys.entity.DiyEntity;
+import io.renren.modules.sys.entity.HotelEntity;
 import io.renren.modules.sys.entity.ViewEntity;
 import io.renren.modules.sys.service.DiyService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.session.InvalidSessionException;
@@ -59,6 +66,16 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
          diyEntity.get(i).setViewEntity(viewEntity);            //给景点赋值
         }
       return diyEntity;
+    }
+
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        Page<DiyEntity> page = this.selectPage(
+                new Query<DiyEntity>(params).getPage(),
+                new EntityWrapper<DiyEntity>()
+
+        );
+        return new PageUtils(page);
     }
 
 
