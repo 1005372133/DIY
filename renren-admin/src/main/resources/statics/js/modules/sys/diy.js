@@ -142,9 +142,8 @@ var vm = new Vue({
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: baseURL + "sys/view/delete",
-                    contentType: "application/json",
-				    data: JSON.stringify(ids),
+				    url: baseURL + "sys/diy/delete/"+ids,
+                    contentType: "json",
 				    success: function(r){
 						if(r.code == 0){
 							alert('操作成功', function(index){
@@ -162,6 +161,7 @@ var vm = new Vue({
                 vm.view = r.view;
             });
 		},
+
         diy: function(){
             var id = getSelectedRow();
             if(id == null){
