@@ -1894,3 +1894,350 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown co
 ### SQL: SELECT  id AS id,view_id AS viewId,user_id AS userId,view_entity AS viewEntity  FROM diy LIMIT 0,10
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
 ; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list']
+2019-03-14 11:05:46,798 [WARN] [http-nio-8080-exec-1] o.s.c.annotation.ClassPathScanningCandidateComponentProvider [Jdk14Logger.java : 99] No MyBatis mapper was found in '[io.renren.modules.*.dao]' package. Please check your configuration.
+2019-03-14 11:05:52,044 [ERROR] [http-nio-8080-exec-10] io.renren.common.exception.RRExceptionHandler [RRExceptionHandler.java : 63] 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+### The error may exist in io/renren/modules/sys/dao/DiyDao.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id AS id,view_id AS viewId,user_id AS userId,view_entity AS viewEntity  FROM diy LIMIT 0,10
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+### The error may exist in io/renren/modules/sys/dao/DiyDao.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id AS id,view_id AS viewId,user_id AS userId,view_entity AS viewEntity  FROM diy LIMIT 0,10
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:234)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy71.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:238)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:135)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:75)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy131.selectPage(Unknown Source)
+	at com.baomidou.mybatisplus.service.impl.ServiceImpl.selectPage(ServiceImpl.java:416)
+	at io.renren.modules.sys.service.impl.DiyServiceImpl.queryPage(DiyServiceImpl.java:73)
+	at io.renren.modules.sys.service.impl.DiyServiceImpl$$FastClassBySpringCGLIB$$a5da8028.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:684)
+	at io.renren.modules.sys.service.impl.DiyServiceImpl$$EnhancerBySpringCGLIB$$c7abcf18.queryPage(<generated>)
+	at io.renren.modules.sys.service.impl.DiyServiceImpl$$FastClassBySpringCGLIB$$a5da8028.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:684)
+	at io.renren.modules.sys.service.impl.DiyServiceImpl$$EnhancerBySpringCGLIB$$af46626.queryPage(<generated>)
+	at io.renren.modules.sys.controller.DiyController.selectByDiy(DiyController.java:52)
+	at sun.reflect.GeneratedMethodAccessor296.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:112)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at io.renren.common.xss.XssFilter.doFilter(XssFilter.java:39)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:40002)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:806)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1498)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+	at sun.reflect.GeneratedConstructorAccessor667.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45005)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:939)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at sun.reflect.GeneratedMethodAccessor142.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy120.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at sun.reflect.GeneratedMethodAccessor297.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 96 common frames omitted
+2019-03-14 11:05:52,053 [WARN] [http-nio-8080-exec-10] o.s.w.s.m.m.annotation.ExceptionHandlerExceptionResolver [Jdk14Logger.java : 99] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+### The error may exist in io/renren/modules/sys/dao/DiyDao.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id AS id,view_id AS viewId,user_id AS userId,view_entity AS viewEntity  FROM diy LIMIT 0,10
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'view_entity' in 'field list']
+2019-03-14 11:10:20,104 [INFO] [main] io.renren.AdminApplication [Jdk14Logger.java : 99] Starting AdminApplication on DESKTOP-0TAVUQB with PID 11708 (F:\idea\renren-security\renren-admin\target\classes started by Administrator in F:\idea\renren-security)
+2019-03-14 11:10:20,124 [INFO] [main] io.renren.AdminApplication [Jdk14Logger.java : 99] The following profiles are active: dev
+2019-03-14 11:10:20,216 [INFO] [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [Jdk14Logger.java : 99] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@50acf55d: startup date [Thu Mar 14 11:10:20 CST 2019]; root of context hierarchy
+2019-03-14 11:10:22,053 [INFO] [main] o.s.data.repository.config.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-14 11:10:22,848 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'shiroConfig' of type [io.renren.common.config.ShiroConfig$$EnhancerBySpringCGLIB$$84926123] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,015 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'org.springframework.boot.context.properties.ConversionServiceDeducer$Factory' of type [org.springframework.boot.context.properties.ConversionServiceDeducer$Factory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,328 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'mybatis-plus-com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,339 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'mybatisPlusConfig' of type [io.renren.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$301572ff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,371 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,386 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$2c26c577] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,394 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'dynamicDataSourceConfig' of type [io.renren.datasources.DynamicDataSourceConfig$$EnhancerBySpringCGLIB$$a668c49f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,478 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,487 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'com.alibaba.druid.spring.boot.autoconfigure.stat.DruidFilterConfiguration' of type [com.alibaba.druid.spring.boot.autoconfigure.stat.DruidFilterConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,534 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'statFilter' of type [com.alibaba.druid.filter.stat.StatFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,559 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'firstDataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,572 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'dataSource' of type [io.renren.datasources.DynamicDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:23,767 [INFO] [main] com.alibaba.druid.pool.DruidDataSource [DruidDataSource.java : 930] {dataSource-1} inited
+2019-03-14 11:10:24,820 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,832 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,833 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sysUserDao' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,842 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sysUserDao' of type [com.sun.proxy.$Proxy80] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,847 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sysMenuDao' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,853 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sysMenuDao' of type [com.sun.proxy.$Proxy81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,854 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'userRealm' of type [io.renren.modules.sys.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,883 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:24,921 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:25,013 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:25,144 [INFO] [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [Jdk14Logger.java : 99] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$de87271a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 11:10:26,171 [INFO] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [Jdk14Logger.java : 99] Tomcat initialized with port(s): 8080 (http)
+2019-03-14 11:10:26,208 [INFO] [main] org.apache.catalina.core.StandardService [DirectJDKLog.java : 180] Starting service [Tomcat]
+2019-03-14 11:10:26,208 [INFO] [main] org.apache.catalina.core.StandardEngine [DirectJDKLog.java : 180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-14 11:10:26,215 [INFO] [localhost-startStop-1] org.apache.catalina.core.AprLifecycleListener [DirectJDKLog.java : 180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\jdk\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:\Python37\Scripts\;D:\Python37\;D:\app\Administrator\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\jdk\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;D:\BaiduNetdiskDownload\adb;E:\模拟器\Nox\bin;%S;STEMROOT%\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\MySQL\MySQL Server 5.7\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\MySQL\MySQL Server 5.7\bin;E:\Git\cmd;E:\ideaIU-2018.1.6.win\plugins\maven\lib\maven3\bin;E:\node;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\MySQL\MySQL Server 5.7\bin;J:\;C:\Users\Administrator\AppData\Roaming\npm;G:\ideaIU-2018.1.6.win\plugins\maven\lib\maven3\bin\;;.]
+2019-03-14 11:10:26,461 [INFO] [localhost-startStop-1] o.a.c.c.ContainerBase.[Tomcat].[localhost].[/renren-admin] [DirectJDKLog.java : 180] Initializing Spring embedded WebApplicationContext
+2019-03-14 11:10:26,462 [INFO] [localhost-startStop-1] org.springframework.web.context.ContextLoader [Jdk14Logger.java : 99] Root WebApplicationContext: initialization completed in 6245 ms
+2019-03-14 11:10:26,776 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-14 11:10:26,777 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-14 11:10:26,777 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-14 11:10:26,777 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-14 11:10:26,778 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'delegatingFilterProxy' to urls: [/*]
+2019-03-14 11:10:26,778 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'xssFilter' to urls: [/*]
+2019-03-14 11:10:26,778 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'webStatFilter' to urls: [/*]
+2019-03-14 11:10:26,779 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean [Jdk14Logger.java : 99] Mapping filter: 'shiroFilter' to: [/*]
+2019-03-14 11:10:26,779 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean [Jdk14Logger.java : 99] Servlet dispatcherServlet mapped to [/]
+2019-03-14 11:10:26,781 [INFO] [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean [Jdk14Logger.java : 99] Servlet statViewServlet mapped to [/druid/*]
+2019-03-14 11:10:27,607 [INFO] [main] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-03-14 11:10:27,630 [INFO] [main] org.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-03-14 11:10:27,630 [INFO] [main] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-03-14 11:10:27,636 [INFO] [main] o.springframework.scheduling.quartz.LocalDataSourceJobStore [JobStoreSupport.java : 672] Using db table-based data access locking (synchronization).
+2019-03-14 11:10:27,639 [INFO] [main] o.springframework.scheduling.quartz.LocalDataSourceJobStore [JobStoreCMT.java : 145] JobStoreCMT initialized.
+2019-03-14 11:10:27,641 [INFO] [main] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'RenrenScheduler' with instanceId 'DESKTOP-0TAVUQB1552533027610'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2019-03-14 11:10:27,641 [INFO] [main] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'RenrenScheduler' initialized from an externally provided properties instance.
+2019-03-14 11:10:27,641 [INFO] [main] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-03-14 11:10:27,643 [INFO] [main] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@434d001d
+2019-03-14 11:10:30,701 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/run]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.run(java.lang.Long[])
+2019-03-14 11:10:30,702 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/update]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.update(io.renren.modules.job.entity.ScheduleJobEntity)
+2019-03-14 11:10:30,703 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/delete]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.delete(java.lang.Long[])
+2019-03-14 11:10:30,703 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/resume]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.resume(java.lang.Long[])
+2019-03-14 11:10:30,704 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/list]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,705 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/save]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.save(io.renren.modules.job.entity.ScheduleJobEntity)
+2019-03-14 11:10:30,705 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/info/{jobId}]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.info(java.lang.Long)
+2019-03-14 11:10:30,706 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/schedule/pause]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobController.pause(java.lang.Long[])
+2019-03-14 11:10:30,707 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/scheduleLog/list]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,708 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/scheduleLog/info/{logId}]}" onto public io.renren.common.utils.R io.renren.modules.job.controller.ScheduleJobLogController.info(java.lang.Long)
+2019-03-14 11:10:30,713 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/update]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.update(io.renren.modules.lesson.entity.CarLogEntity)
+2019-03-14 11:10:30,714 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/delete]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.delete(java.lang.String[])
+2019-03-14 11:10:30,714 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/list]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,715 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/save]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.save(io.renren.modules.lesson.entity.CarLogEntity)
+2019-03-14 11:10:30,715 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.info(java.lang.String)
+2019-03-14 11:10:30,716 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/carlog/insertSelective],methods=[POST]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.CarLogController.insertSelective(io.renren.modules.lesson.entity.CarLogEntity)
+2019-03-14 11:10:30,718 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/update]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.update(io.renren.modules.lesson.entity.ProLessonEntity)
+2019-03-14 11:10:30,719 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/delete]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.delete(java.lang.String[])
+2019-03-14 11:10:30,719 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/list]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,720 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/save]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.save(io.renren.modules.lesson.entity.ProLessonEntity)
+2019-03-14 11:10:30,720 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.info(java.lang.String)
+2019-03-14 11:10:30,721 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/prolesson/insertSelective],methods=[POST]}" onto public io.renren.common.utils.R io.renren.modules.lesson.controller.ProLessonController.insertSelective(io.renren.modules.lesson.entity.ProLessonEntity)
+2019-03-14 11:10:30,723 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/oss/delete]}" onto public io.renren.common.utils.R io.renren.modules.oss.controller.SysOssController.delete(java.lang.Long[])
+2019-03-14 11:10:30,724 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/oss/list]}" onto public io.renren.common.utils.R io.renren.modules.oss.controller.SysOssController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,725 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/oss/config]}" onto public io.renren.common.utils.R io.renren.modules.oss.controller.SysOssController.config()
+2019-03-14 11:10:30,725 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/oss/saveConfig]}" onto public io.renren.common.utils.R io.renren.modules.oss.controller.SysOssController.saveConfig(io.renren.modules.oss.cloud.CloudStorageConfig)
+2019-03-14 11:10:30,726 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/oss/upload]}" onto public io.renren.common.utils.R io.renren.modules.oss.controller.SysOssController.upload(org.springframework.web.multipart.MultipartFile) throws java.lang.Exception
+2019-03-14 11:10:30,729 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/diy/delete/{id}],methods=[POST]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.DiyController.delete(java.lang.String)
+2019-03-14 11:10:30,730 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/diy/{Viewid}],methods=[POST]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.DiyController.save(java.lang.String)
+2019-03-14 11:10:30,731 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/diy/selectByDiy],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.DiyController.selectByDiy(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,732 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.update(io.renren.modules.sys.entity.HotelEntity)
+2019-03-14 11:10:30,732 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.delete(java.lang.Integer[])
+2019-03-14 11:10:30,733 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/list],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,734 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.save(io.renren.modules.sys.entity.HotelEntity)
+2019-03-14 11:10:30,734 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.info(java.lang.Integer)
+2019-03-14 11:10:30,734 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/hotel/hotel],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.HotelController.hotel()
+2019-03-14 11:10:30,735 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/config/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysConfigController.update(io.renren.modules.sys.entity.SysConfigEntity)
+2019-03-14 11:10:30,736 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/config/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysConfigController.delete(java.lang.Long[])
+2019-03-14 11:10:30,736 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/config/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysConfigController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,737 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/config/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysConfigController.save(io.renren.modules.sys.entity.SysConfigEntity)
+2019-03-14 11:10:30,738 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/config/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysConfigController.info(java.lang.Long)
+2019-03-14 11:10:30,739 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.update(io.renren.modules.sys.entity.SysDeptEntity)
+2019-03-14 11:10:30,740 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.delete(long)
+2019-03-14 11:10:30,740 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/list]}" onto public java.util.List<io.renren.modules.sys.entity.SysDeptEntity> io.renren.modules.sys.controller.SysDeptController.list()
+2019-03-14 11:10:30,741 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.save(io.renren.modules.sys.entity.SysDeptEntity)
+2019-03-14 11:10:30,741 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/info]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.info()
+2019-03-14 11:10:30,742 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/info/{deptId}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.info(java.lang.Long)
+2019-03-14 11:10:30,743 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dept/select]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDeptController.select()
+2019-03-14 11:10:30,744 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.update(io.renren.modules.sys.entity.SysDictEntity)
+2019-03-14 11:10:30,745 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.delete(java.lang.Long[])
+2019-03-14 11:10:30,746 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,746 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.save(io.renren.modules.sys.entity.SysDictEntity)
+2019-03-14 11:10:30,746 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.info(java.lang.Long)
+2019-03-14 11:10:30,747 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/dict/selectToAdd],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysDictController.selectToAdd()
+2019-03-14 11:10:30,748 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/log/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,749 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/login],methods=[POST]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysLoginController.login(java.lang.String,java.lang.String,java.lang.String)
+2019-03-14 11:10:30,749 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/captcha.jpg]}" onto public void io.renren.modules.sys.controller.SysLoginController.captcha(javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2019-03-14 11:10:30,750 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/logout],methods=[GET]}" onto public java.lang.String io.renren.modules.sys.controller.SysLoginController.logout()
+2019-03-14 11:10:30,751 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.update(io.renren.modules.sys.entity.SysMenuEntity)
+2019-03-14 11:10:30,751 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.delete(long)
+2019-03-14 11:10:30,752 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/list]}" onto public java.util.List<io.renren.modules.sys.entity.SysMenuEntity> io.renren.modules.sys.controller.SysMenuController.list()
+2019-03-14 11:10:30,752 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.save(io.renren.modules.sys.entity.SysMenuEntity)
+2019-03-14 11:10:30,753 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/info/{menuId}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.info(java.lang.Long)
+2019-03-14 11:10:30,754 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/select]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.select()
+2019-03-14 11:10:30,755 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/menu/nav]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysMenuController.nav()
+2019-03-14 11:10:30,756 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/ || /index.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.index()
+2019-03-14 11:10:30,756 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/main.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.main()
+2019-03-14 11:10:30,757 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/index1.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.index1()
+2019-03-14 11:10:30,757 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/modules/{module}/{url}.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.module(java.lang.String,java.lang.String)
+2019-03-14 11:10:30,758 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/404.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.notFound()
+2019-03-14 11:10:30,758 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/login.html]}" onto public java.lang.String io.renren.modules.sys.controller.SysPageController.login()
+2019-03-14 11:10:30,759 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.update(io.renren.modules.sys.entity.SysRoleEntity)
+2019-03-14 11:10:30,759 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.delete(java.lang.Long[])
+2019-03-14 11:10:30,761 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,761 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.save(io.renren.modules.sys.entity.SysRoleEntity)
+2019-03-14 11:10:30,762 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/info/{roleId}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.info(java.lang.Long)
+2019-03-14 11:10:30,762 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/role/select]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysRoleController.select()
+2019-03-14 11:10:30,765 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.update(io.renren.modules.sys.entity.SysUserEntity)
+2019-03-14 11:10:30,765 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.delete(java.lang.Long[])
+2019-03-14 11:10:30,766 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,766 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.save(io.renren.modules.sys.entity.SysUserEntity)
+2019-03-14 11:10:30,766 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/info]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.info()
+2019-03-14 11:10:30,766 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/info/{userId}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.info(java.lang.Long)
+2019-03-14 11:10:30,768 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/password]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.password(java.lang.String,java.lang.String)
+2019-03-14 11:10:30,768 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/findJL],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.findJL()
+2019-03-14 11:10:30,768 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/user/register],methods=[GET]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.SysUserController.insertUser()
+2019-03-14 11:10:30,769 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/view/update]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.ViewController.update(io.renren.modules.sys.entity.ViewEntity)
+2019-03-14 11:10:30,770 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/view/delete]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.ViewController.delete(java.lang.Integer[])
+2019-03-14 11:10:30,770 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/view/list]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.ViewController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-14 11:10:30,771 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/view/save]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.ViewController.save(io.renren.modules.sys.entity.ViewEntity)
+2019-03-14 11:10:30,771 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/sys/view/info/{id}]}" onto public io.renren.common.utils.R io.renren.modules.sys.controller.ViewController.info(java.lang.Integer)
+2019-03-14 11:10:30,777 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-03-14 11:10:30,778 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-03-14 11:10:30,779 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-03-14 11:10:30,782 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-14 11:10:30,783 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-14 11:10:31,203 [INFO] [main] o.s.web.servlet.view.freemarker.FreeMarkerConfigurer [Jdk14Logger.java : 99] ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-03-14 11:10:31,277 [INFO] [main] s.d.spring.web.PropertySourcedRequestMappingHandlerMapping [Jdk14Logger.java : 99] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-14 11:10:31,697 [INFO] [main] o.s.web.servlet.handler.SimpleUrlHandlerMapping [Jdk14Logger.java : 99] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-14 11:10:32,128 [INFO] [main] o.s.w.s.mvc.method.annotation.RequestMappingHandlerAdapter [Jdk14Logger.java : 99] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@50acf55d: startup date [Thu Mar 14 11:10:20 CST 2019]; root of context hierarchy
+2019-03-14 11:10:32,271 [INFO] [main] o.s.web.servlet.handler.SimpleUrlHandlerMapping [Jdk14Logger.java : 99] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-14 11:10:32,272 [INFO] [main] o.s.web.servlet.handler.SimpleUrlHandlerMapping [Jdk14Logger.java : 99] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-14 11:10:32,272 [INFO] [main] o.s.web.servlet.handler.SimpleUrlHandlerMapping [Jdk14Logger.java : 99] Mapped URL path [/statics/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-14 11:10:32,319 [INFO] [main] o.s.w.s.m.m.annotation.ExceptionHandlerExceptionResolver [Jdk14Logger.java : 99] Detected @ExceptionHandler methods in RRExceptionHandler
+2019-03-14 11:10:32,484 [INFO] [main] o.s.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [Jdk14Logger.java : 99] Adding welcome page template: index
+2019-03-14 11:10:33,621 [INFO] [main] o.s.jmx.export.annotation.AnnotationMBeanExporter [Jdk14Logger.java : 99] Registering beans for JMX exposure on startup
+2019-03-14 11:10:33,624 [INFO] [main] o.s.jmx.export.annotation.AnnotationMBeanExporter [Jdk14Logger.java : 99] Bean with name 'firstDataSource' has been autodetected for JMX exposure
+2019-03-14 11:10:33,625 [INFO] [main] o.s.jmx.export.annotation.AnnotationMBeanExporter [Jdk14Logger.java : 99] Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-03-14 11:10:33,638 [INFO] [main] o.s.jmx.export.annotation.AnnotationMBeanExporter [Jdk14Logger.java : 99] Located MBean 'firstDataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=firstDataSource,type=DruidDataSourceWrapper]
+2019-03-14 11:10:33,640 [INFO] [main] o.s.jmx.export.annotation.AnnotationMBeanExporter [Jdk14Logger.java : 99] Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-03-14 11:10:33,648 [INFO] [main] o.springframework.context.support.DefaultLifecycleProcessor [Jdk14Logger.java : 99] Starting beans in phase 2147483647
+2019-03-14 11:10:33,648 [INFO] [main] s.d.spring.web.plugins.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-03-14 11:10:33,673 [INFO] [main] s.d.spring.web.plugins.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-03-14 11:10:33,731 [INFO] [main] s.d.spring.web.scanners.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-03-14 11:10:33,989 [INFO] [main] s.d.s.web.readers.operation.CachingOperationNameGenerator [CachingOperationNameGenerator.java : 40] Generating unique operation named: insertSelectiveUsingPOST_1
+2019-03-14 11:10:34,022 [INFO] [main] org.springframework.scheduling.quartz.SchedulerFactoryBean [Jdk14Logger.java : 99] Will start Quartz Scheduler [RenrenScheduler] in 30 seconds
+2019-03-14 11:10:34,081 [INFO] [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [Jdk14Logger.java : 99] Tomcat started on port(s): 8080 (http) with context path '/renren-admin'
+2019-03-14 11:10:34,378 [INFO] [main] io.renren.AdminApplication [Jdk14Logger.java : 99] Started AdminApplication in 15.291 seconds (JVM running for 21.053)
+2019-03-14 11:11:04,023 [INFO] [Quartz Scheduler [RenrenScheduler]] org.springframework.scheduling.quartz.SchedulerFactoryBean [Jdk14Logger.java : 99] Starting Quartz Scheduler now, after delay of 30 seconds
+2019-03-14 11:11:04,068 [INFO] [Quartz Scheduler [RenrenScheduler]] o.springframework.scheduling.quartz.LocalDataSourceJobStore [JobStoreSupport.java : 3629] ClusterManager: detected 1 failed or restarted instances.
+2019-03-14 11:11:04,069 [INFO] [Quartz Scheduler [RenrenScheduler]] o.springframework.scheduling.quartz.LocalDataSourceJobStore [JobStoreSupport.java : 3488] ClusterManager: Scanning for instance "DESKTOP-0TAVUQB1552530903677"'s failed in-progress jobs.
+2019-03-14 11:11:04,074 [INFO] [Quartz Scheduler [RenrenScheduler]] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler RenrenScheduler_$_DESKTOP-0TAVUQB1552533027610 started.
+2019-03-14 11:11:04,439 [INFO] [http-nio-8080-exec-2] o.a.c.c.ContainerBase.[Tomcat].[localhost].[/renren-admin] [DirectJDKLog.java : 180] Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-14 11:11:04,440 [INFO] [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet [Jdk14Logger.java : 99] FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-14 11:11:04,496 [INFO] [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet [Jdk14Logger.java : 99] FrameworkServlet 'dispatcherServlet': initialization completed in 56 ms
+2019-03-14 11:11:04,526 [INFO] [http-nio-8080-exec-2] o.apache.shiro.session.mgt.AbstractValidatingSessionManager [AbstractValidatingSessionManager.java : 233] Enabling session validation scheduler...
