@@ -70,10 +70,14 @@ public class SysUserController extends AbstractController {
 	 */
 	@ApiOperation(value = "注册")
 	@SysLog("注册用户")
-	@PostMapping("/register")
-	public R insertUser(@RequestBody SysUserEntity user){
-		/*ValidatorUtils.validateEntity(user, AddGroup.class);*/
-		sysUserService.insertUser(user);
+	@PutMapping(value = "/register")
+	public R insertUser(String username, String password,String email,String mobile){
+		SysUserEntity sysUserEntity =new SysUserEntity();
+		sysUserEntity.setUsername(username);
+		sysUserEntity.setPassword(password);
+		sysUserEntity.setEmail(email);
+		sysUserEntity.setMobile(mobile);
+		sysUserService.insertUser(sysUserEntity);
 		return R.ok();
 	}
 
