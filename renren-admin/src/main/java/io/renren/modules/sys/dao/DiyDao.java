@@ -2,6 +2,7 @@ package io.renren.modules.sys.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import io.renren.modules.sys.entity.DiyEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,4 +18,5 @@ public interface DiyDao extends BaseMapper<DiyEntity> {
 
     List<DiyEntity> selectByDiy(String userId);
 
+    List<DiyEntity> exitsDiy(@Param("userId")String userId,@Param("viewId")String viewId);
 }

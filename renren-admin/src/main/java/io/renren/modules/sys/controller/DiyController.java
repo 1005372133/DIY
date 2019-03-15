@@ -3,7 +3,6 @@ package io.renren.modules.sys.controller;
 import io.renren.common.utils.LoginUserUtil;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
-import io.renren.modules.sys.entity.DiyEntity;
 import io.renren.modules.sys.service.DiyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,13 +31,17 @@ public class DiyController {
     @PostMapping ("{Viewid}")
     @ApiOperation(value = "收藏")
     public R save(@PathVariable String Viewid ){
-        diyService.add(Viewid);
-        return R.ok();
+       if (diyService.add(Viewid)){
+           return R.ok();
+       }
+        else {
+           return R.error(1,"您已经收藏过了");
+       }
     }
 
 
     @PostMapping ("delete/{id}")
-    @ApiOperation(value = "删除")
+    @ApiOperation(value = "取消收藏")
     public R delete(@PathVariable String id ){
         diyService.deleteId(id);
         return R.ok();

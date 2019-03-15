@@ -43,12 +43,18 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
     ViewDao viewDao;
 
     @Override
-    public void add(String Viewid) {
+    public Boolean add(String Viewid) {
+        boolean flag=true;
+        if (diyDao.exitsDiy(LoginUserUtil.getUserId(),Viewid).size()>0){
+            flag=false;
+            return flag;
+        }
         DiyEntity diyEntity=new DiyEntity();
-        diyEntity.setId(UUID.randomUUID().toString().substring(0,8));
-        diyEntity.setUserId(LoginUserUtil.getUserId());
         diyEntity.setViewId(Viewid);
+        diyEntity.setUserId(LoginUserUtil.getUserId());
+        diyEntity.setId(UUID.randomUUID().toString().substring(0,8));
                 diyDao.add(diyEntity);
+        return flag;
     }
 
     @Override

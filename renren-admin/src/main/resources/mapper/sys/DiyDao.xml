@@ -14,6 +14,7 @@
 		id,user_id, view_id
 	</sql>
 
+    <!--新增-->
     <insert id="add" parameterType="io.renren.modules.sys.entity.DiyEntity">
         insert into diy
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -28,12 +29,19 @@
         </trim>
     </insert>
 
+    <!--取消收藏-->
     <delete id="deleteId" parameterType="java.lang.String">
         delete  from  diy where id =#{id}
     </delete>
 
+        <!--查找当前帐号下收藏的景点-->
     <select id="selectByDiy" resultMap="DiyMap">
      select  v.id as VID,v.area,v.transport,v.Price,v.hotel_id,v.hotel_name,v.name,v.picture,v.Remarks,d.view_id,d.user_id,d.id from  diy d left join view v  on v.id=d.view_id where user_id=#{userId}
     </select>
 
+
+    <!--查找是否有重复-->
+    <select id="exitsDiy" resultMap="DiyMap"  parameterType="java.lang.String">
+        select id,view_id,user_id from diy where view_id=#{viewId} and user_id=#{userId}
+    </select>
 </mapper>
