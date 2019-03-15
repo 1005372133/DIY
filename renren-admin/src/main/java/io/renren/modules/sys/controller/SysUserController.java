@@ -70,10 +70,10 @@ public class SysUserController extends AbstractController {
 	 */
 	@ApiOperation(value = "注册")
 	@SysLog("注册用户")
-	@GetMapping("/register")
-	public R insertUser(){
-		/*ValidatorUtils.validateEntity(user, AddGroup.class);
-		sysUserService.insertUser(user);*/
+	@PostMapping("/register")
+	public R insertUser(@RequestBody SysUserEntity user){
+		/*ValidatorUtils.validateEntity(user, AddGroup.class);*/
+		sysUserService.insertUser(user);
 		return R.ok();
 	}
 

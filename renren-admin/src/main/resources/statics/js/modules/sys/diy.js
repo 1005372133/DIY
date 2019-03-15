@@ -3,7 +3,7 @@ $(function () {
         url: baseURL + 'sys/diy/selectByDiy',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true,hidden:true },
             { label: '景点名称', name: 'viewEntity.name', index: 'name', width: 80 , templet: '#name', event: 'name-event'},
 			{ label: '地区', name: 'viewEntity.area', index: 'area', width: 80 },
 			{ label: '交通方式', name: 'viewEntity.transport', index: 'transport', width: 80 },

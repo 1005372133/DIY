@@ -12,7 +12,6 @@ $(function () {
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 },
 			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 },
-            {fixed: 'right', width: 120, align: 'center', label: '操作', unresize: true, toolbar: '#barDemo'}
         ],
 		viewrecords: true,
         height: 385,

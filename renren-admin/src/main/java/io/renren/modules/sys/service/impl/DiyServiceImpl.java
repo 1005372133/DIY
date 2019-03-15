@@ -45,15 +45,17 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
     @Override
     public Boolean add(String Viewid) {
         boolean flag=true;
+        /*验证是否被收藏过*/
         if (diyDao.exitsDiy(LoginUserUtil.getUserId(),Viewid).size()>0){
             flag=false;
             return flag;
         }
+        /*没有收藏过则添加*/
         DiyEntity diyEntity=new DiyEntity();
         diyEntity.setViewId(Viewid);
         diyEntity.setUserId(LoginUserUtil.getUserId());
         diyEntity.setId(UUID.randomUUID().toString().substring(0,8));
-                diyDao.add(diyEntity);
+        diyDao.add(diyEntity);
         return flag;
     }
 

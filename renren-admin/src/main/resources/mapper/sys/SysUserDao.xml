@@ -12,15 +12,15 @@
 		<result property="mobile" column="mobile"/>
 		<result property="status" column="status"/>
 		<result property="deptId" column="dept_Id"/>
-		<result property="createTime" column="createTime"/>
+		<result property="createTime" column="create_time"/>
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		user_id, username, salt, password, email, mobile,status,dept_Id,createTime
+		user_id, username, salt, password, email, mobile,status,dept_Id,create_time
 	</sql>
 	<!-- 插入记录 -->
-	<insert id="insertUser" parameterType="io.renren.modules.sys.entity.SysUserEntity">
-		insert into TS_USER(
+	<insert id="insertUser" parameterType="io.renren.modules.sys.entity.SysUserEntity" >
+		insert into sys_user(
 		<include refid="Base_Column_List" />
 		)
 		values (#{userId}, #{username}, #{salt}, #{password}, #{email}, #{mobile},#{status},#{deptId},#{createTime})

@@ -51,6 +51,6 @@ public interface SysUserDao extends BaseMapper<SysUserEntity> {
 	 */
 	List<SysUserEntity>findJL();
 
-	String insertUser(SysUserEntity sysUserEntity);
+	void insertUser(SysUserEntity sysUserEntity);
 
 }

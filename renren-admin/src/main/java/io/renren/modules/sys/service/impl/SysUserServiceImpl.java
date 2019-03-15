@@ -129,15 +129,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
-	public String insertUser(SysUserEntity sysUserEntity) {
+	public SysUserEntity insertUser(SysUserEntity sysUserEntity) {
 		sysUserEntity.setCreateTime(new Date());
 		String salt = RandomStringUtils.randomAlphanumeric(20);
 		sysUserEntity.setSalt(salt);
 		sysUserEntity.setPassword(ShiroUtils.sha256(sysUserEntity.getPassword(), sysUserEntity.getSalt()));
 		sysUserEntity.setDeptId(new Long((long)6));
 		sysUserEntity.setStatus(1);
-		this.insertUser(sysUserEntity);
-		return "新增成功";
+			sysUserDao.insertUser(sysUserEntity);
+		return sysUserEntity;
 	}
 
 }

@@ -62,5 +62,5 @@ public interface SysUserService extends IService<SysUserEntity> {
 
 	List<SysUserEntity> findJL();
 
-	String insertUser(SysUserEntity sysUserEntity);
+	SysUserEntity insertUser(SysUserEntity sysUserEntity);
 }
