@@ -81,7 +81,6 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
         Page<DiyEntity> page = this.selectPage(
                 new Query<DiyEntity>(params).getPage(),
                 new EntityWrapper<DiyEntity>()
-
         );
         return new PageUtils(page);
     }

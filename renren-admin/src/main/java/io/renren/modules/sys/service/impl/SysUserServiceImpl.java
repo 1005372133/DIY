@@ -24,6 +24,7 @@ import io.renren.common.annotation.DataFilter;
 import io.renren.common.utils.Constant;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
+import io.renren.common.utils.UUIDutils;
 import io.renren.modules.sys.dao.SysUserDao;
 import io.renren.modules.sys.entity.SysDeptEntity;
 import io.renren.modules.sys.entity.SysUserEntity;
@@ -37,10 +38,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 
 /**
@@ -132,11 +130,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	public SysUserEntity insertUser(SysUserEntity sysUserEntity) {
 		sysUserEntity.setCreateTime(new Date());
 		String salt = RandomStringUtils.randomAlphanumeric(20);
+		sysUserEntity.setUserId(UUIDutils.randomUUID10());
 		sysUserEntity.setSalt(salt);
 		sysUserEntity.setPassword(ShiroUtils.sha256(sysUserEntity.getPassword(), sysUserEntity.getSalt()));
 		sysUserEntity.setDeptId(new Long((long)6));
 		sysUserEntity.setStatus(1);
-			sysUserDao.insertUser(sysUserEntity);
+		List<Long> rid =new ArrayList<>();
+		rid.add(new Long((long)5));
+		sysUserEntity.setRoleIdList(rid);
+		sysUserDao.insertUser(sysUserEntity);
+		sysUserRoleService.saveOrUpdate(sysUserEntity.getUserId(),rid);
 		return sysUserEntity;
 	}
 
