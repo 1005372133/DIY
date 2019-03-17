@@ -10,8 +10,8 @@ $(function () {
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
 			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
-			{ label: '图片', name: 'picture', index: 'picture', width: 80 },
-			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 },
+			{ label: '图片', name: 'picture', index: 'picture', width: 80 , hidden:true},
+			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 , hidden:true},
         ],
 		viewrecords: true,
         height: 385,
@@ -46,6 +46,7 @@ var vm = new Vue({
 		showList: true,
 		title: null,
 		view: {},
+        det:{},
         dict: {},//字典
         Lists:{},//字典接受
 		hotel:{},//酒店
@@ -157,10 +158,28 @@ var vm = new Vue({
 				});
 			});
 		},
-		getInfo: function(id){
-			$.get(baseURL + "sys/view/info/"+id, function(r){
-                vm.view = r.view;
+		getInfo: function(){
+            var ids = getSelectedRows();
+            if(ids == null){
+                return ;
+            }
+			$.get(baseURL + "sys/view/info/"+ids, function(r){
+                vm.det = r.view;
             });
+
+
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-molv',
+                title: "注册用户",
+                area: ['600px', '400px'],
+                shadeClose: false,
+                content: jQuery("#detai"),
+                btn1: function (index) {
+                }
+            });
+
+
 		},
         diy: function(){
             var id = getSelectedRow();
@@ -185,6 +204,30 @@ var vm = new Vue({
                 }
             });
 		},
+        detai: function(){
+            var id = getSelectedRow();
+            if(id == null){
+                return ;
+            }
+            var url="sys/diy/"+id
+            $.ajax({
+                type: "POST",
+                url: baseURL +url,
+                contentType: "application/json",
+                data:	{Viewid:id},
+                success: function (r) {
+                    if (r.code === 0) {
+
+
+
+                    } else {
+                        alert(r.msg);
+                    }
+                },
+                error: function () {
+                }
+            });
+        },
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
