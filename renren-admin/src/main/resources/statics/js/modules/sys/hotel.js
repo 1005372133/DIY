@@ -141,7 +141,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'hotelName': vm.q.hotelName,  hotelType: vm.q.hotelType},
+                postData:{'hotel_name': vm.q.hotelName,  'hotel_type': vm.q.hotelType},
                 page:page
             }).trigger("reloadGrid");
 		}

@@ -26,14 +26,14 @@ public class HotelServiceImpl extends ServiceImpl<HotelDao, HotelEntity> impleme
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        String hotelName = (String)params.get("hotelName");
-        String hotelType = (String)params.get("hotelType");
+        String hotelName = (String)params.get("hotel_name");
+        String hotelType = (String)params.get("hotel_type");
         Page<HotelEntity> page = this.selectPage(
                 new Query<HotelEntity>(params).getPage(),
                 new EntityWrapper<HotelEntity>()
-                        .like(StringUtils.isNotBlank(hotelName),"hotelName", hotelName)
+                        .like(StringUtils.isNotBlank(hotelName),"hotel_name", hotelName)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
-                        .like(StringUtils.isNotBlank(hotelType),"hotelType", hotelType)
+                        .like(StringUtils.isNotBlank(hotelType),"hotel_type", hotelType)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
         );
 
