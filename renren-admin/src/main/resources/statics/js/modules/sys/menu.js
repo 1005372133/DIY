@@ -154,7 +154,7 @@ var Menu = {
 Menu.initColumn = function () {
     var columns = [
         {field: 'selectItem', radio: true},
-        {title: '菜单ID', field: 'menuId', visible: false, align: 'center', valign: 'middle', width: '80px'},
+        {title: '菜单ID', field: 'menuId', visible: false, align: 'center', valign: 'middle', width: '80px' , hidden:true},
         {title: '菜单名称', field: 'name', align: 'center', valign: 'middle', sortable: true, width: '180px'},
         {title: '上级菜单', field: 'parentName', align: 'center', valign: 'middle', sortable: true, width: '100px'},
         {title: '图标', field: 'icon', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
