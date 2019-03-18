@@ -38,6 +38,26 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
+
+    new AjaxUpload('#load', {
+        action: baseURL + "sys/oss/upload",
+        name: 'file',
+        autoSubmit:true,
+        responseType:"json",
+        onSubmit:function(file, extension){
+            if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
+                alert('只支持jpg、png、gif格式的图片！');
+                return false;
+            }
+        },
+        onComplete : function(file, r){
+            if(r.code == 0){
+              vm.view.picture=r.url;
+            }else{
+                alert(r.msg);
+            }
+        }
+    });
 });
 
 var vm = new Vue({
@@ -171,7 +191,7 @@ var vm = new Vue({
             layer.open({
                 type: 1,
                 skin: 'layui-layer-molv',
-                title: "注册用户",
+                title: "查看详情",
                 area: ['600px', '400px'],
                 shadeClose: false,
                 content: jQuery("#detai"),
