@@ -66,21 +66,21 @@
                     <input type="text" class="form-control" v-model="view.price" placeholder=""/>
                 </div>
             </div>
-            <div class="form-group">
+ <!--           <div class="form-group">
                 <div class="col-sm-2 control-label">酒店</div>
                 <div class="col-sm-10">
-                   <!-- <input type="text" class="form-control" v-model="view.hotelId" placeholder=""/>-->
+                   &lt;!&ndash; <input type="text" class="form-control" v-model="view.hotelId" placeholder=""/>&ndash;&gt;
                     <Select v-model="view.hotelId" class="form-control" clearable>
                         <Option :value="item.id" v-for="item in hotel" :key="item.id">{{item.hotelName}}</Option>
                     </Select>
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <div class="col-sm-2 control-label">酒店名称</div>
                 <div class="col-sm-10">
                     <!--<input type="text" class="form-control" v-model="view.hotelName" placeholder=""/>-->
                     <Select v-model="view.hotelName" class="form-control" clearable>
-                        <Option :value="item.hotelName" v-for="item in hotel" :key="item.hotelName">{{item.hotelName}}</Option>
+                        <Option :value="item.hotelName" v-for="item in hotel" :key="item.hotelName" >{{item.hotelName}}</Option>
                     </Select>
                 </div>
             </div>
@@ -149,12 +149,12 @@
                 <input type="text" class="form-control" v-model="det.price" placeholder=""/>
             </div>
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <div class="col-sm-2 control-label">酒店</div>
             <div class="col-sm-10">
                 <input type="text" class="form-control" v-model="det.hotelId" placeholder=""/>
             </div>
-        </div>
+        </div>-->
         <div class="form-group">
             <div class="col-sm-2 control-label">酒店名称</div>
             <div class="col-sm-10">

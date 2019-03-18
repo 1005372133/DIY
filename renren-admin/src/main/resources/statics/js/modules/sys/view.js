@@ -8,7 +8,7 @@ $(function () {
 			{ label: '地区', name: 'area', index: 'area', width: 80 },
 			{ label: '交通方式', name: 'transport', index: 'transport', width: 80 },
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
-			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },
+/*			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },*/
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 , hidden:true},
 			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 , hidden:true},
