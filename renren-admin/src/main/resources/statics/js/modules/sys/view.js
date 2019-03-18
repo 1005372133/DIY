@@ -72,7 +72,7 @@ var vm = new Vue({
 		hotel:{},//酒店
 		Hotel:{},
         q:{
-            hotelName: null,
+            name: null,
             price: null
         },
 	},
@@ -215,7 +215,7 @@ var vm = new Vue({
                 success: function (r) {
                     if (r.code === 0) {
 						console.log(id)
-                    	alert("新增成功")
+                    	alert("收藏成功")
                     } else {
                         alert(r.msg);
                     }
@@ -252,7 +252,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'hotelName': vm.q.hotelName,  price: vm.q.price},
+                postData:{'name': vm.q.name,  price: vm.q.price},
                 page:page
             }).trigger("reloadGrid");
 		}

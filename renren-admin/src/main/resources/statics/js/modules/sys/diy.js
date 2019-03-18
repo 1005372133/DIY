@@ -8,7 +8,7 @@ $(function () {
 			{ label: '地区', name: 'viewEntity.area', index: 'area', width: 80 },
 			{ label: '交通方式', name: 'viewEntity.transport', index: 'transport', width: 80 },
 			{ label: '价格', name: 'viewEntity.price', index: 'Price', width: 80 },
-			{ label: '酒店', name: 'viewEntity.hotelId', index: 'hotel_id', width: 80 },
+			/*{ label: '酒店', name: 'viewEntity.hotelId', index: 'hotel_id', width: 80 },*/
 			{ label: '酒店名称', name: 'viewEntity.hotelName', index: 'hotel_name', width: 80 },
 			{ label: '图片', name: 'viewEntity.picture', index: 'picture', width: 80 , hidden:true},
 			{ label: '备注', name: 'viewEntity.remarks', index: 'Remarks', width: 80 , hidden:true},
@@ -139,7 +139,7 @@ var vm = new Vue({
 				return ;
 			}
 			
-			confirm('确定要删除选中的记录？', function(){
+			confirm('确定要取消收藏选中的记录？', function(){
 				$.ajax({
 					type: "POST",
 				    url: baseURL + "sys/diy/delete/"+ids,

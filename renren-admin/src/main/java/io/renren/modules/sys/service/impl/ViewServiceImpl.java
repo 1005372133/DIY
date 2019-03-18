@@ -24,12 +24,12 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        String hotelName = (String)params.get("hotelName");
+        String name = (String)params.get("name");
         String price = (String)params.get("price");
         Page<ViewEntity> page = this.selectPage(
                 new Query<ViewEntity>(params).getPage(),
                 new EntityWrapper<ViewEntity>()
-                        .like(StringUtils.isNotBlank(hotelName),"hotelName", hotelName)
+                        .like(StringUtils.isNotBlank(name),"name", name)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(price),"price", price)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
