@@ -130,7 +130,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	public SysUserEntity insertUser(SysUserEntity sysUserEntity) {
 		sysUserEntity.setCreateTime(new Date());
 		String salt = RandomStringUtils.randomAlphanumeric(20);
-		sysUserEntity.setUserId(UUIDutils.randomUUID10());
+		sysUserEntity.setUserId(UUIDutils.randomUUID10()%1000000000);
 		sysUserEntity.setSalt(salt);
 		sysUserEntity.setPassword(ShiroUtils.sha256(sysUserEntity.getPassword(), sysUserEntity.getSalt()));
 		sysUserEntity.setDeptId(new Long((long)6));

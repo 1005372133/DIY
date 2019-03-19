@@ -159,7 +159,6 @@ var vm = new Vue({
                 dataType: "json",
                 success: function(result){
                     if(result.code == 0){//登录成功
-                        console.log('登陆成功')
                     }else{
                         vm.error = true;
                         vm.errorMsg = result.msg;
@@ -168,8 +167,6 @@ var vm = new Vue({
                     }
                 }
             });
-
-
             layer.open({
                 type: 1,
                 skin: 'layui-layer-molv',
@@ -179,7 +176,7 @@ var vm = new Vue({
                 content: jQuery("#regist"),
                 btn: ['注册','取消'],
                 btn1: function (index) {
-                    var data = "password=" + vm.upassword + "&username=" + vm.upassword+ "&uemail=" + vm.uemail+ "&mobile=" + vm.umobile;
+                    var data = "password=" + vm.upassword + "&username=" + vm.upassword+ "&email=" + vm.uemail+ "&mobile=" + vm.umobile;
                   //  console.log(this.vm.uname)
                     $.ajax({
                         type: "PUT",
@@ -188,21 +185,18 @@ var vm = new Vue({
                         dataType: "json",
                         success: function(result){
                             if(result.code == 0){
-                               console.log('注册成功')
-                                console.log(vm.uname)
-
                                 //执行注册代码
-
+                                alert("注册成功")
                                 $.ajax({
                                     type: "GET",
                                     url: "logout",
                                     data: null,
                                     dataType: "json",
                                     success: function(result){
-                                            console.log('推出登陆')
+                                        layer.close()
                                     },
                                     error: function () {
-                                        console.log('推出登陆')
+                                        layer.close()
                                     }
                                 });
 
