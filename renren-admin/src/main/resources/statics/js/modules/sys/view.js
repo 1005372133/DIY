@@ -197,6 +197,17 @@ var vm = new Vue({
                 return ;
             }
 			$.get(baseURL + "sys/view/info/"+ids, function(r){
+                vm.view = r.view;
+            });
+            this.getDict()
+            this.getHotel()
+		},
+        getIn: function(){
+            var ids = getSelectedRows();
+            if(ids == null){
+                return ;
+            }
+            $.get(baseURL + "sys/view/info/"+ids, function(r){
                 vm.det = r.view;
             });
 
@@ -213,7 +224,7 @@ var vm = new Vue({
             });
 
 
-		},
+        },
         diy: function(){
             var id = getSelectedRow();
             if(id == null){

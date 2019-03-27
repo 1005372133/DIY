@@ -136,6 +136,7 @@ var vm = new Vue({
 			$.get(baseURL + "sys/hotel/info/"+id, function(r){
                 vm.hotel = r.hotel;
             });
+            this.getDict();
 		},
 		reload: function (event) {
 			vm.showList = true;
