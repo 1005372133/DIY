@@ -1,10 +1,14 @@
 package io.renren.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -163,4 +167,26 @@ public class ViewEntity implements Serializable {
 	public String getRemarks() {
 		return remarks;
 	}
+
+	@TableField(exist = false)
+	private List<String> Viewlist;
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date Time;
+
+	public Date getTime() {
+		return Time;
+	}
+
+	public void setTime(Date time) {
+		Time = time;
+	}
+
+	public List<String> getViewlist() {
+		return Viewlist;
+	}
+
+	public void setViewlist(List<String> viewlist) {
+		Viewlist = viewlist;
+	}
+
 }

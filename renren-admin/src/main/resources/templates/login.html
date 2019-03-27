@@ -187,6 +187,7 @@ var vm = new Vue({
                             if(result.code == 0){
                                 //执行注册代码
                                 alert("注册成功")
+                                layer.close(index);
                                 $.ajax({
                                     type: "GET",
                                     url: "logout",

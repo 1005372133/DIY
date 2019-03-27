@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import io.renren.common.validator.ValidatorUtils;
+import io.renren.common.validator.group.AddGroup;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

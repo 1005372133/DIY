@@ -10,6 +10,7 @@ $(function () {
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
 /*			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },*/
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
+            { label: '时间', name: 'time', index: 'time', width: 80},
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 , hidden:true},
 			{ label: '备注', name: 'remarks', index: 'Remarks', width: 80 , hidden:true},
         ],
@@ -59,13 +60,22 @@ $(function () {
         }
     });
 });
-
+laydate.render({
+    elem: '#time' //指定元素
+    ,type: 'datetime'
+    ,trigger: 'click'
+    ,done: function(value, date, endDate){
+        vm.view.time = value;
+    }
+});
 var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		showList: true,
 		title: null,
-		view: {},
+		view: {
+            hotelName:[]
+        },
         det:{},
         dict: {},//字典
         Lists:{},//字典接受
@@ -73,7 +83,9 @@ var vm = new Vue({
 		Hotel:{},
         q:{
             name: null,
-            price: null
+            price: null,
+            area: null,
+            hotelName: null
         },
 	},
 	methods: {
@@ -252,7 +264,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'name': vm.q.name,  price: vm.q.price},
+                postData:{'name': vm.q.name,  'price': vm.q.price , 'area': vm.q.area, 'hotelName': vm.q.hotelName},
                 page:page
             }).trigger("reloadGrid");
 		}
