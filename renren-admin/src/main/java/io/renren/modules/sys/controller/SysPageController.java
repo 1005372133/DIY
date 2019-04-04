@@ -59,5 +59,9 @@ public class SysPageController {
 	public String notFound(){
 		return "404";
 	}
+	@RequestMapping("ss.html")
+	public String lol(){
+		return "ss";
+	}
 
 }
