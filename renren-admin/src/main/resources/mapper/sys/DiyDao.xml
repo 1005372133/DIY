@@ -39,6 +39,9 @@
      select  v.id as VID,v.area,v.transport,v.Price,v.hotel_id,v.hotel_name,v.name,v.picture,v.Remarks,d.view_id,d.user_id,d.id from  diy d left join view v  on v.id=d.view_id where user_id=#{userId}
     </select>
 
+    <select id="selectByAdmin" resultMap="DiyMap">
+     select  v.id as VID,v.area,v.transport,v.Price,v.hotel_id,v.hotel_name,v.name,v.picture,v.Remarks,d.view_id,d.user_id,d.id from  diy d left join view v  on v.id=d.view_id
+    </select>
 
     <!--查找是否有重复-->
     <select id="exitsDiy" resultMap="DiyMap"  parameterType="java.lang.String">

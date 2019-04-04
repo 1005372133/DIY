@@ -17,6 +17,8 @@ public interface DiyDao extends BaseMapper<DiyEntity> {
     void deleteId(String id);
 
     List<DiyEntity> selectByDiy(String userId);
+    List<DiyEntity> selectByAdmin();
+
 
     List<DiyEntity> exitsDiy(@Param("userId")String userId,@Param("viewId")String viewId);
 }

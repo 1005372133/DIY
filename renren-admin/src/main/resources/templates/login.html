@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap.min.css">
   <link rel="stylesheet" href="${request.contextPath}/statics/css/font-awesome.min.css">
   <link rel="stylesheet" href="${request.contextPath}/statics/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/css/index.css">
     <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/css/common.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -24,8 +25,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
-<!--<div class="layui-carousel" id="test1">
+<body class="hold-transition login-page" style="background-color: white">
+<div class="layui-carousel" id="test1">
     <div carousel-item>
         <img src="${request.contextPath}/statics/picture/login.jpg" style="height:100%">
         <img src="${request.contextPath}/statics/picture/login.jpg" style="height:100%">
@@ -33,7 +34,7 @@
         <img src="${request.contextPath}/statics/picture/login.jpg" style="height:100%">
         <img src="${request.contextPath}/statics/picture/login.jpg" style="height:100%">
     </div>
-</div>-->
+</div>
 <!-- style="background-size:100%;background-image: url('${request.contextPath}/statics/picture/login.jpg')" -->
 <section id="content">
     <!-- 黑马精选start-->
@@ -352,6 +353,7 @@
         carousel.render({
             elem: '#test1'
             ,width: '100%' //设置容器宽度
+            ,height: '500px'
             ,arrow: 'always' //始终显示箭头
             //,anim: 'updown' //切换动画方式
         });
@@ -395,7 +397,7 @@ var vm = new Vue({
                             parent.location.href ='index.html';
                         }
                         else {
-                            parent.location.href ='404.html';
+                            parent.location.href ='index.html';
                         }
 					}else{
 						vm.error = true;

@@ -66,7 +66,13 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
 
     @Override
     public List<DiyEntity> selectByDiy(String userId) {
-        List<DiyEntity> diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
+        List<DiyEntity> diyEntity =new ArrayList<>();
+        if (userId.equals("1")){
+          diyEntity= diyDao.selectByAdmin();
+        }
+        else {
+            diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
+        }
                                                             //依次查询景点
         for (int i=0;i<diyEntity.size();i++)
         {
