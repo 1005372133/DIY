@@ -37,7 +37,7 @@ public class ViewController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("sys:view:list")
+   // @RequiresPermissions("sys:view:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = viewService.queryPage(params);
 
