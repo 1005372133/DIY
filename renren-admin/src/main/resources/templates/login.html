@@ -122,47 +122,43 @@
 </section>
 <div class="login-box" id="rrapp" v-cloak>
   <!-- /.login-logo -->
-
-  <div class="login-box-body" id="loginq">
-      <div v-if="error" class="alert alert-danger alert-dismissible">
-        <h4 style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" v-model="username" placeholder="账号">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" v-model="password" placeholder="密码">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
-        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="checkbox icheck">
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="button" a href="javascript:;" class="btn btn-primary btn-block btn-flat" @click="login">登录</button>
-        </div>
-          <div class="col-xs-4">
-              <button type="button" class="btn btn-primary btn-block btn-flat" @click="regester">注册</button>
-          </div>
-        <!-- /.col -->
-      </div>
-    <!-- /.social-auth-links -->
-
-  </div>
-
-
-  <!-- /.login-box-body -->
+    <a class="btn btn-primary btn-block btn-flat" @click="loginOpen">登陆</a>
+    <button type="button" class="btn btn-primary btn-block btn-flat" @click="regester">注册</button>
+  <!-- /.login-box-body     登陆模态-->
+    <div id="login123" style="display: none;">
+        <form class="layui-form" action="">
+            <div v-if="error" class="alert alert-danger alert-dismissible">
+                <h4 style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" v-model="username" placeholder="账号">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" v-model="password" placeholder="密码">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="checkbox icheck">
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="button" a href="javascript:;" class="btn btn-primary btn-block btn-flat" @click="login">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--注册模态-->
     <div id="regist" style="display: none;">
         <form class="layui-form" action="">
         <div class="form-group">
@@ -201,141 +197,6 @@
 <script src="${request.contextPath}/statics/libs/app.js"></script>
 <script src="${request.contextPath}/statics/layer-v3.1.1/layer/layer.js"></script>
 <script src="${request.contextPath}/statics/layui/layui.js"></script>
-<script>
-    /*轮播*/
-    layui.use('carousel', function(){
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            ,width: '100%' //设置容器宽度
-            ,height: '500px'
-            ,arrow: 'always' //始终显示箭头
-            //,anim: 'updown' //切换动画方式
-        });
-    });
-</script>
-<script type="text/javascript">
-var vm = new Vue({
-	el:'#rrapp',
-	data:{
-		username: '',
-		password: '',
-		captcha: '',
-		error: false,
-		errorMsg: '',
-		src: 'captcha.jpg',
-        uname:'',
-        upassword:'',
-        uemail:'',
-        umobile:'',
-	},
-	beforeCreate: function(){
-		if(self != top){
-			top.location.href = self.location.href;
-		}
-	},
-	methods: {
-        refreshCode1: function(){
-            alert(1111)
-        },
-		refreshCode: function(){
-			this.src = "captcha.jpg?t=" + $.now();
-		},
-		login: function (event) {
-			var data = "username="+vm.username+"&password="+vm.password+"&captcha="+vm.captcha;
-			$.ajax({
-				type: "POST",
-			    url: "sys/login",
-			    data: data,
-			    dataType: "json",
-			    success: function(result){
-					if(result.code == 0){//登录成功
-					    debugger
-                        console.log(result)
-					    if (vm.username==='admin'){
-                            parent.location.href ='index.html';
-                        }
-                        else {
-                            parent.location.href ='index.html';
-                        }
-					}else{
-						vm.error = true;
-						vm.errorMsg = result.msg;
-						
-						vm.refreshCode();
-					}
-				}
-			});
-		},
-
-        regester: function(){
-            layer.open({
-                type: 1,
-                skin: 'layui-layer-molv',
-                title: "注册用户",
-                area: ['600px', '400px'],
-                shadeClose: false,
-                content: jQuery("#regist"),
-                btn: ['注册','取消'],
-                btn1: function (index) {
-                    var data = "password=" + vm.upassword + "&username=" + vm.upassword+ "&email=" + vm.uemail+ "&mobile=" + vm.umobile;
-                  //  console.log(this.vm.uname)
-                    $.ajax({
-                        type: "PUT",
-                        url: "sys/user/register",
-                        data: data,
-                        dataType: "json",
-                        success: function(result){
-                                alert("注册成功")
-                                layer.close(index);
-                        }
-                    });
-                }
-            });
-        }
-	},
-    mounted:{
-        refreshCode1(){
-            alert(1111)
-        }
-    }
-});
-</script>
-<script>
-    $(function () {
-        $.post("sys/view/list",{},function (routes) {
-            var row_hot ="";
-            for (var i = 0; i < 4; i++) {
-                row_hot += '<div class="col-md-3">\n' +
-                    '                                <a href="404.html?rid='+routes[i].rid+'">\n' +
-                    '                                    <img src="'+routes[i].rimage+'" alt="">\n' +
-                    '                                    <div class="has_border">\n' +
-                    '                                        <h3>'+routes[i].rname+'</h3>\n' +
-                    '                                        <div class="price">网付价<em>￥</em><strong>'+routes[i].price+'</strong><em>起</em></div>\n' +
-                    '                                    </div>\n' +
-                    '                                </a>\n' +
-                    '                            </div>';
-            }
-            $("#row_hot").html(row_hot);
-
-            var row_time ="";
-            for (var i = 4; i < 8; i++) {
-                row_time += '<div class="col-md-3">\n' +
-                    '                                <a href="404.html?rid='+routes[i].rid+'">\n' +
-                    '                                    <img src="'+routes[i].rimage+'" alt="">\n' +
-                    '                                    <div class="has_border">\n' +
-                    '                                        <h3>'+routes[i].rname+'</h3>\n' +
-                    '                                        <div class="price">网付价<em>￥</em><strong>'+routes[i].price+'</strong><em>起</em></div>\n' +
-                    '                                    </div>\n' +
-                    '                                </a>\n' +
-                    '                            </div>';
-            }
-            $("#row_time").html(row_time);
-
-
-        });
-    })
-</script>
+<script src="${request.contextPath}/statics/js/login.js?_${.now?long}"></script>
 </body>
 </html>
