@@ -1,27 +1,28 @@
-/*$(function () {
-    $.post("sys/view/list",{},function (routes) {
+$(function () {
+    $.post("sys/view/list",{},function (list) {
         var row_hot ="";
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < list.page.list.length; i++) {
             row_hot += '<div class="col-md-3">\n' +
-                '                                <a href="404.html?rid='+routes[i].rid+'">\n' +
-                '                                    <img src="'+routes[i].rimage+'" alt="">\n' +
+                '                                <a href="404.html?rid='+list.page.list[i].id+'">\n' +
+                '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                 '                                    <div class="has_border">\n' +
-                '                                        <h3>'+routes[i].rname+'</h3>\n' +
-                '                                        <div class="price">网付价<em>￥</em><strong>'+routes[i].price+'</strong><em>起</em></div>\n' +
+                '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
                 '                                    </div>\n' +
                 '                                </a>\n' +
                 '                            </div>';
         }
         $("#row_hot").html(row_hot);
 
+
         var row_time ="";
-        for (var i = 4; i < 8; i++) {
+        for (var i = 0; i < list.page.list.length; i++) {
             row_time += '<div class="col-md-3">\n' +
-                '                                <a href="404.html?rid='+routes[i].rid+'">\n' +
-                '                                    <img src="'+routes[i].rimage+'" alt="">\n' +
+                '                                <a href="404.html?rid='+list.page.list[i].id+'">\n' +
+                '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                 '                                    <div class="has_border">\n' +
-                '                                        <h3>'+routes[i].rname+'</h3>\n' +
-                '                                        <div class="price">网付价<em>￥</em><strong>'+routes[i].price+'</strong><em>起</em></div>\n' +
+                '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
                 '                                    </div>\n' +
                 '                                </a>\n' +
                 '                            </div>';
@@ -29,8 +30,9 @@
         $("#row_time").html(row_time);
 
 
+
     });
-})*/
+})
 /*轮播*/
 layui.use('carousel', function(){
     var carousel = layui.carousel;
@@ -96,7 +98,6 @@ var vm = new Vue({
         //  刷新验证码
         refreshCode: function(){
             this.src = "captcha.jpg?t=" + $.now();
-            this.diy();
         },
 
         //  登陆
