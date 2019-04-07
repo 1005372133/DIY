@@ -68,6 +68,9 @@ public class DiyController {
     @ApiOperation(value = "查找收藏")
     public R selectByDiy(@RequestParam Map<String, Object> params){
         PageUtils page = diyService.queryPage(params);
+        if ((LoginUserUtil.getUserId())==null){
+            return null;
+        }
         page.setList(diyService.selectByDiy(LoginUserUtil.getUserId()));
         return R.ok().put("page",page);
     }

@@ -17,7 +17,6 @@
   <div class="bread_box">
     <a href="login.html">首页</a>
     <span> &gt;</span>
-    <a href="#">国内游</a><span> &gt;</span>
     <a href="#"><p class="pros_title" id="rnamea"></p></a>
   </div>
   <div class="prosum_box">
@@ -95,19 +94,19 @@
         var ddstr = '<a class="up_img up_img_disable"></a>';
         var dt = '<img alt="" class="big_img" src="'+rid.view.picture+'">';
         $("#dt").html(dt);
-      /*  for (var i = 0; i < route.routeImgList.length; i++) {
+        for (var i = 0; i < 3; i++) {
             var astr;
             if(i >= 4){
-                astr = '<a title="" class="little_img" data-bigpic="'+route.routeImgList[i].bigPic+'" style="display:none;">\n' +
-                    '                        <img src="'+route.routeImgList[i].smallPic+'">\n' +
+                astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'" style="display:none;">\n' +
+                    '                        <img src="'+rid.view.picture+'">\n' +
                     '                    </a>';
             }else{
-                astr = '<a title="" class="little_img" data-bigpic="'+route.routeImgList[i].bigPic+'">\n' +
-                    '                        <img src="'+route.routeImgList[i].smallPic+'">\n' +
+                astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'">\n' +
+                    '                        <img src="'+rid.view.picture+'">\n' +
                     '                    </a>';
             }
             ddstr += astr;
-        }*/
+        }
         ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
         $("#dd").html(ddstr);
         goImg();
@@ -192,10 +191,10 @@
         var rid = getParameter("rid");
         $.post("sys/diy/saveweb",{rid:rid},function (data) {
             if (data) {
-                alert(data);
                 /*location.href="login.html";*/
+                alert(data.msg);
             }else{
-                location.reload();
+                alert(data.msg);
             }
         });
     }

@@ -7,6 +7,8 @@ $(function () {
                 '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                 '                                    <div class="has_border">\n' +
                 '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
+                '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
                 '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
                 '                                    </div>\n' +
                 '                                </a>\n' +
@@ -22,6 +24,8 @@ $(function () {
                 '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                 '                                    <div class="has_border">\n' +
                 '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
+                '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
                 '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
                 '                                    </div>\n' +
                 '                                </a>\n' +
@@ -35,7 +39,7 @@ $(function () {
         var diyshow ="";
         for (var i = 0; i <selectByDiy.page.list.length; i++) {
             diyshow += '<div class="col-md-3">\n' +
-                '                                <a href="404.html?rid='+selectByDiy.page.list[i].id+'">\n' +
+                '                                <a href="404.html?rid='+selectByDiy.page.list[i].viewEntity.id+'">\n' +
                 '                                    <img src="'+selectByDiy.page.list[i].viewEntity.picture+'" alt="">\n' +
                 '                                    <div class="has_border">\n' +
                 '                                        <h3>'+selectByDiy.page.list[i].viewEntity.name+'</h3>\n' +
