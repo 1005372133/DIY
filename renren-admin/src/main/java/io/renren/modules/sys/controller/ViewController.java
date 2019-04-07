@@ -7,11 +7,7 @@ import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AddGroup;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.modules.sys.entity.ViewEntity;
 import io.renren.modules.sys.service.ViewService;
@@ -48,10 +44,17 @@ public class ViewController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     //@RequiresPermissions("sys:view:info")
     public R info(@PathVariable("id") Integer id){
         ViewEntity view = viewService.selectById(id);
+
+        return R.ok().put("view", view);
+    }
+    @GetMapping("/infos")
+    //@RequiresPermissions("sys:view:info")
+    public R infos(Integer rid){
+        ViewEntity view = viewService.selectById(rid);
 
         return R.ok().put("view", view);
     }

@@ -15,7 +15,7 @@
 <!-- 详情 start -->
 <div class="wrap">
   <div class="bread_box">
-    <a href="/">首页</a>
+    <a href="login.html">首页</a>
     <span> &gt;</span>
     <a href="#">国内游</a><span> &gt;</span>
     <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
@@ -33,9 +33,9 @@
       <p class="pros_title" id="rname"></p>
       <p class="hot" id="routeIntroduce"></p>
       <div class="pros_other">
-        <p>经营商家  ：<span id="sname"></span></p>
-        <p>咨询电话 : <span id="consphone"></span></p>
-        <p>地址 ： <span id="address"></span></p>
+        <p>经营商家  ：YY国旅</p>
+        <p>咨询电话 : 400-618-1111</p>
+        <p>地址 ： 旅行大厦</p>
       </div>
       <div class="pros_price">
         <p class="price"><strong id="price">¥</strong><span>起</span></p>
@@ -76,28 +76,26 @@
 <!--引入头部-->
 <div id="footer"></div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-3.3.1.js"></script>
+<script src="${request.contextPath}/statics/js/jquery-3.3.1.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="${request.contextPath}/statics/js/bootstrap.min.js"></script>
 <!--导入布局js，共享header和footer-->
-<script type="text/javascript" src="js/include.js"></script>
-<script src="js/getParameter.js"></script>
+<script src="${request.contextPath}/statics/js/getParameter.js"></script>
 <script>
     var rid = getParameter("rid");
-    $.get("route/findOne",{rid:rid},function (route) {
-        $("#rname").html(route.rname);
-        $("#routeIntroduce").html(route.routeIntroduce);
-        $("#price").html("￥"+route.price);
-        $("#sname").html(route.seller.sname);
-        $("#consphone").html(route.seller.consphone);
-        $("#address").html(route.seller.address);
-        $("#favoriteCount").html("已收藏"+route.count+"次");
+    debugger
+    $.get("sys/view/infos",{rid:rid},function (rid) {
+        $("#price").html("￥"+rid.view.price);
+        $("#rname").html(rid.view.name);
+        $("#routeIntroduce").html(rid.view.remarks);
+
+    /*    $("#favoriteCount").html("已收藏"+count+"次");*/
 
 
         var ddstr = '<a class="up_img up_img_disable"></a>';
-        var dt = '<img alt="" class="big_img" src="'+route.routeImgList[0].bigPic+'">';
+        var dt = '<img alt="" class="big_img" src="'+rid.view.picture+'">';
         $("#dt").html(dt);
-        for (var i = 0; i < route.routeImgList.length; i++) {
+      /*  for (var i = 0; i < route.routeImgList.length; i++) {
             var astr;
             if(i >= 4){
                 astr = '<a title="" class="little_img" data-bigpic="'+route.routeImgList[i].bigPic+'" style="display:none;">\n' +
@@ -109,7 +107,7 @@
                     '                    </a>';
             }
             ddstr += astr;
-        }
+        }*/
         ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
         $("#dd").html(ddstr);
         goImg();

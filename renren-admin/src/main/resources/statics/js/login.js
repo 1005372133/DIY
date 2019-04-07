@@ -32,7 +32,6 @@ $(function () {
 
 
     $.get("sys/diy/selectByDiy",{},function (selectByDiy) {
-        debugger
         var diyshow ="";
         for (var i = 0; i <selectByDiy.page.list.length; i++) {
             diyshow += '<div class="col-md-3">\n' +
@@ -167,8 +166,5 @@ var vm = new Vue({
                 }
             });
         }
-    },
-    mounted:{
-
     }
 });
