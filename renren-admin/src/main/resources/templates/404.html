@@ -18,7 +18,7 @@
     <a href="login.html">首页</a>
     <span> &gt;</span>
     <a href="#">国内游</a><span> &gt;</span>
-    <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+    <a href="#"><p class="pros_title" id="rnamea"></p></a>
   </div>
   <div class="prosum_box">
     <dl class="prosum_left">
@@ -83,10 +83,10 @@
 <script src="${request.contextPath}/statics/js/getParameter.js"></script>
 <script>
     var rid = getParameter("rid");
-    debugger
     $.get("sys/view/infos",{rid:rid},function (rid) {
         $("#price").html("￥"+rid.view.price);
         $("#rname").html(rid.view.name);
+        $("#rnamea").html(rid.view.name);
         $("#routeIntroduce").html(rid.view.remarks);
 
     /*    $("#favoriteCount").html("已收藏"+count+"次");*/
@@ -190,10 +190,10 @@
     });
     function addFavorite() {
         var rid = getParameter("rid");
-        $.get("route/addFavorite",{rid:rid},function (data) {
+        $.post("sys/diy/saveweb",{rid:rid},function (data) {
             if (data) {
                 alert(data);
-                location.href="login.html";
+                /*location.href="login.html";*/
             }else{
                 location.reload();
             }

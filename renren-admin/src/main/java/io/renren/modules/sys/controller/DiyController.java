@@ -40,6 +40,21 @@ public class DiyController {
     }
 
 
+    /**
+     * 保存
+     */
+    @PostMapping ("saveweb")
+    @ApiOperation(value = "收藏")
+    public R saveweb(String rid ){
+        if (diyService.add(rid)){
+            return R.ok();
+        }
+        else {
+            return R.error(1,"您已经收藏过了");
+        }
+    }
+
+
     @PostMapping ("delete/{id}")
     @ApiOperation(value = "取消收藏")
     public R delete(@PathVariable String id ){
