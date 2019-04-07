@@ -99,6 +99,7 @@ public class ShiroConfig {
         filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/sys/user/register", "anon");
         filterMap.put("/sys/view/list", "anon");
+        filterMap.put("/sys/diy/selectByDiy", "anon");
         filterMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 

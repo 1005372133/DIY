@@ -49,7 +49,7 @@ public class DiyController {
 
 
 
-    @GetMapping ("selectByDiy")
+    @GetMapping ("/selectByDiy")
     @ApiOperation(value = "查找收藏")
     public R selectByDiy(@RequestParam Map<String, Object> params){
         PageUtils page = diyService.queryPage(params);

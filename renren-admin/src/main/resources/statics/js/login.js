@@ -28,9 +28,24 @@ $(function () {
                 '                            </div>';
         }
         $("#row_time").html(row_time);
+    });
 
 
-
+    $.get("sys/diy/selectByDiy",{},function (selectByDiy) {
+        debugger
+        var diyshow ="";
+        for (var i = 0; i <selectByDiy.page.list.length; i++) {
+            diyshow += '<div class="col-md-3">\n' +
+                '                                <a href="404.html?rid='+selectByDiy.page.list[i].id+'">\n' +
+                '                                    <img src="'+selectByDiy.page.list[i].viewEntity.picture+'" alt="">\n' +
+                '                                    <div class="has_border">\n' +
+                '                                        <h3>'+selectByDiy.page.list[i].viewEntity.name+'</h3>\n' +
+                '                                        <div class="price">网付价<em>￥</em><strong>'+selectByDiy.page.list[i].viewEntity.price+'</strong><em>起</em></div>\n' +
+                '                                    </div>\n' +
+                '                                </a>\n' +
+                '                            </div>';
+        }
+        $("#diyshow").html(diyshow);
     });
 })
 /*轮播*/
@@ -115,7 +130,7 @@ var vm = new Vue({
                             parent.location.href ='index.html';
                         }
                         else {
-                            parent.location.href ='404.html';
+                            parent.location.href ='login.html';
                         }
                     }else{
                         vm.error = true;
