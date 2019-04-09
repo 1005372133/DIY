@@ -44,7 +44,7 @@ $(function () {
          var diyshow ="";
          for (var i = 0; i <selectByDiy.page.list.length; i++) {
              diyshow += '<div class="col-md-3">\n' +
-                 '                                <a href="404.html?rid='+selectByDiy.page.list[i].viewEntity.id+'">\n' +
+                 '                                <a href="404.html?rid='+selectByDiy.page.list[i].viewEntity.id+'&disid='+selectByDiy.page.list[i].id+'">\n' +
                  '                                    <img src="'+selectByDiy.page.list[i].viewEntity.picture+'" alt="">\n' +
                  '                                    <div class="has_border">\n' +
                  '                                        <h3>'+selectByDiy.page.list[i].viewEntity.name+'</h3>\n' +

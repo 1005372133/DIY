@@ -32,11 +32,22 @@ public class DiyController {
     @ApiOperation(value = "收藏")
     public R save(@PathVariable String Viewid ){
        if (diyService.add(Viewid)){
-           return R.ok();
+           return R.ok("收藏成功");
        }
         else {
            return R.error(1,"您已经收藏过了");
        }
+    }
+
+    @GetMapping("/flag")
+    @ApiOperation(value = "验证收藏")
+    public Boolean ifFavorite(String rid ){
+        if (diyService.ifFavorite(rid)){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 
@@ -59,7 +70,7 @@ public class DiyController {
     @ApiOperation(value = "取消收藏")
     public R delete(@PathVariable String id ){
         diyService.deleteId(id);
-        return R.ok();
+        return R.ok("取消收藏");
     }
 
 

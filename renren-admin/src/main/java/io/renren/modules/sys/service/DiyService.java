@@ -15,6 +15,7 @@ import java.util.Map;
 public interface DiyService extends IService<DiyEntity> {
 
     Boolean add(String  Viewid);
+     Boolean ifFavorite(String  Viewid);
 
     void deleteId(String id);
 

@@ -35,7 +35,7 @@ import java.util.UUID;
  * @Description:
  */
 @Service("DiyService")
-public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements DiyService {
+public class DiyServiceImpl extends ServiceImpl<DiyDao, DiyEntity> implements DiyService {
 
     @Autowired
     DiyDao diyDao;
@@ -44,19 +44,30 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
 
     @Override
     public Boolean add(String Viewid) {
-        boolean flag=true;
+        boolean flag = true;
         /*验证是否被收藏过*/
-        if (diyDao.exitsDiy(LoginUserUtil.getUserId(),Viewid).size()>0){
-            flag=false;
+        if (diyDao.exitsDiy(LoginUserUtil.getUserId(), Viewid).size() > 0) {
+            flag = false;
             return flag;
         }
         /*没有收藏过则添加*/
-        DiyEntity diyEntity=new DiyEntity();
+        DiyEntity diyEntity = new DiyEntity();
         diyEntity.setViewId(Viewid);
         diyEntity.setUserId(LoginUserUtil.getUserId());
-        diyEntity.setId(UUID.randomUUID().toString().substring(0,8));
+        diyEntity.setId(UUID.randomUUID().toString().substring(0, 8));
         diyDao.add(diyEntity);
         return flag;
+    }
+
+    @Override
+    public Boolean ifFavorite(String Viewid) {
+        boolean flag = true;
+        if (diyDao.exitsDiy(LoginUserUtil.getUserId(), Viewid).size() > 0) {
+            flag = false;
+            return flag;
+        } else {
+            return flag;
+        }
     }
 
     @Override
@@ -66,20 +77,18 @@ public class DiyServiceImpl  extends ServiceImpl<DiyDao, DiyEntity> implements D
 
     @Override
     public List<DiyEntity> selectByDiy(String userId) {
-        List<DiyEntity> diyEntity =new ArrayList<>();
-        if (userId.equals("1")){
-          diyEntity= diyDao.selectByAdmin();
+        List<DiyEntity> diyEntity = new ArrayList<>();
+        if (userId.equals("1")) {
+            diyEntity = diyDao.selectByAdmin();
+        } else {
+            diyEntity = diyDao.selectByDiy(userId);//    获取所有数据
         }
-        else {
-            diyEntity= diyDao.selectByDiy(userId);//    获取所有数据
+        //依次查询景点
+        for (int i = 0; i < diyEntity.size(); i++) {
+            ViewEntity viewEntity = viewDao.selectById(diyEntity.get(i).getViewId());
+            diyEntity.get(i).setViewEntity(viewEntity);            //给景点赋值
         }
-                                                            //依次查询景点
-        for (int i=0;i<diyEntity.size();i++)
-        {
-          ViewEntity viewEntity=  viewDao.selectById(diyEntity.get(i).getViewId());
-         diyEntity.get(i).setViewEntity(viewEntity);            //给景点赋值
-        }
-      return diyEntity;
+        return diyEntity;
     }
 
     @Override
