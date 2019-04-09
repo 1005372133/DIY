@@ -34,7 +34,7 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
                 new EntityWrapper<ViewEntity>()
                         .like(StringUtils.isNotBlank(name),"name", name)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
-                        .like(StringUtils.isNotBlank(price),"price", price)
+                        .gt(StringUtils.isNotBlank(price),"price", price)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(area),"area", area)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
