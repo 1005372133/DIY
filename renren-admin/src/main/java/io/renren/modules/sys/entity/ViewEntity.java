@@ -170,14 +170,14 @@ public class ViewEntity implements Serializable {
 
 	@TableField(exist = false)
 	private List<String> Viewlist;
-	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date Time;
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM")
+	private String Time;
 
-	public Date getTime() {
+	public String getTime() {
 		return Time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		Time = time;
 	}
 

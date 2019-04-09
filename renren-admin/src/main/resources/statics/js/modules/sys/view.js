@@ -61,11 +61,19 @@ $(function () {
     });
 });
 laydate.render({
-    elem: '#time' //指定元素
-    ,type: 'datetime'
+    elem: '#time'//指定元素
+    ,type: 'month'
     ,trigger: 'click'
     ,done: function(value, date, endDate){
         vm.view.time = value;
+    }
+});
+laydate.render({
+    elem: '#time1'//指定元素
+    ,type: 'month'
+    ,trigger: 'click'
+    ,done: function(value, date, endDate){
+        vm.q.time = value;
     }
 });
 var vm = new Vue({
