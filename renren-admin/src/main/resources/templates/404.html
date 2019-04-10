@@ -50,6 +50,8 @@
   <div class="you_need_konw">
     <span>评论</span>
     <div class="notice">
+      <strong id="notice_user"></strong>
+      <p class="pros_title" id="notice"></p>
     </div>
   </div>
   <div class="you_need_konw">
@@ -179,10 +181,12 @@
             $('.big_img').attr('src', big_pic);
         }
     }
-
+    //预加载
     $(function () {
+        notice();
         flag();
     });
+    //判断是否收藏
     function flag() {
         //发送请求，判断用户是否收藏过该线路
         var rid = getParameter("rid");
@@ -200,6 +204,7 @@
             }
         });
     }
+    //添加收藏
     function addFavorite() {
         var rid = getParameter("rid");
         $.post("sys/diy/saveweb",{rid:rid},function (data) {
@@ -211,6 +216,21 @@
         });
         flag();
     }
+    //查询评论
+    function notice(){
+        var rid = getParameter("rid");
+        var notice=""
+        $.post("sys/notice/selectByNotice",{viewId:rid},function (rid) {
+            for (var i = 0; i < rid.page.length; i++) {
+                notice+= '<div class="notice">\n'+
+                        '<strong id="notice_user">'+rid.page[i].userId+'说：</strong>\n'+
+                          '<p class="pros_title" >'+rid.page[i].contest+'</p>\n'+
+                '</div>';
+            }
+            $("#notice").html(notice);
+        });
+    }
+    //取消收藏
     function disFavorite() {
         var disid = getParameter("disid");
         $.post("sys/diy/delete/"+disid,{},function (data) {

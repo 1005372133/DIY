@@ -100,6 +100,7 @@ public class ShiroConfig {
         filterMap.put("/sys/user/register", "anon");
         filterMap.put("/sys/view/*", "anon");
         filterMap.put("sys/diy/flag", "anon");
+        filterMap.put("sys/notice/selectByNotice", "anon");
         filterMap.put("/sys/view/*/*", "anon");
         filterMap.put("/sys/diy/selectByDiy", "anon");
         filterMap.put("/**", "authc");

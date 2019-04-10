@@ -75,6 +75,7 @@ $(function () {
          $("#trip").html(trip);
      });
  }
+
 /*轮播*/
 layui.use('carousel', function(){
     var carousel = layui.carousel;
