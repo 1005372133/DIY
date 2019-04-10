@@ -101,67 +101,69 @@
             </div>
         </form>
     </div>
+    <section id="content">
+        <!-- 精选start-->
+        <section class="hemai_jx">
+            <div class="jx_top">
+                <div class="jx_tit">
+                    <span>旅游精选</span>
+                </div>
+                <!-- Nav tabs -->
+                <ul class="jx_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <span></span>
+                        <a href="#theme" aria-controls="popularity" role="tab" data-toggle="tab">首页</a>
+                    </li>
+                    <li role="presentation">
+                        <span></span>
+                        <a href="#popularity" aria-controls="theme" role="tab" data-toggle="tab">景点浏览</a>
+                    </li>
+                    <li role="presentation">
+                        <span></span>
+                        <a href="#newest" aria-controls="newest" role="tab" data-toggle="tab">收藏定制</a>
+                    </li>
+                    <li role="presentation">
+                        <span></span>
+                        <a href="#diy" aria-controls="diyshow" role="tab" data-toggle="tab">我的定制</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="jx_content">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="popularity">
+
+                        <button type="button" class="btn btn-primary btn-block btn-flat" @click="row_hot">查询</button>
+                        <div class="row" id="row_hot">
+
+
+                            <!--旅游景点-->
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="newest">
+                        <div class="row" id="row_time">
+                            <!--当季旅游-->
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="theme">
+                        <strong>当月推荐</strong>
+                        <div class="row" id="trip">
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="diy">
+                        <div class="row" id="diyshow">
+                            <!--我的定制-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </div>
 <!-- /.login-box -->
 <!-- style="background-size:100%;background-image: url('${request.contextPath}/statics/picture/login.jpg')" -->
-<section id="content">
-    <!-- 精选start-->
-    <section class="hemai_jx">
-        <div class="jx_top">
-            <div class="jx_tit">
-                <span>旅游精选</span>
-            </div>
-            <!-- Nav tabs -->
-            <ul class="jx_tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <span></span>
-                    <a href="#theme" aria-controls="popularity" role="tab" data-toggle="tab">首页</a>
-                </li>
-                <li role="presentation">
-                    <span></span>
-                    <a href="#popularity" aria-controls="theme" role="tab" data-toggle="tab">景点浏览</a>
-                </li>
-                <li role="presentation">
-                    <span></span>
-                    <a href="#newest" aria-controls="newest" role="tab" data-toggle="tab">收藏定制</a>
-                </li>
-                <li role="presentation">
-                    <span></span>
-                    <a href="#diy" aria-controls="diyshow" role="tab" data-toggle="tab">我的定制</a>
-                </li>
-            </ul>
-        </div>
-        <div class="jx_content">
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane" id="popularity">
-                    <button type="button" class="btn btn-primary btn-block btn-flat" @click="row_hot">注册</button>
-                    <div class="row" id="row_hot">
 
-
-                        <!--旅游景点-->
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="newest">
-                    <div class="row" id="row_time">
-                        <!--当季旅游-->
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane active" id="theme">
-                    <strong>当月推荐</strong>
-                    <div class="row" id="trip">
-
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="diy">
-                    <div class="row" id="diyshow">
-                        <!--我的定制-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
 
 <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
 <script src="${request.contextPath}/statics/libs/vue.min.js"></script>
