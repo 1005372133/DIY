@@ -13,5 +13,9 @@
         <result property="remark" column="remark"/>
     </resultMap>
 
+    <select id="selectByNotice" resultMap="noticeMap">
+select n.view_id,n.user_id,n.time,n.remark,n.id,n.contest from notice n LEFT JOIN view v on n.view_id=v.id where view_id=#{viewId}
+    </select>
+
 
 </mapper>

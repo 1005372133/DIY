@@ -1,6 +1,9 @@
 package io.renren.modules.sys.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -16,6 +19,8 @@ import io.renren.modules.sys.service.NoticeService;
 @Service("noticeService")
 public class NoticeServiceImpl extends ServiceImpl<NoticeDao, NoticeEntity> implements NoticeService {
 
+    @Autowired
+    NoticeDao noticeDao;
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         Page<NoticeEntity> page = this.selectPage(
@@ -24,6 +29,11 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeDao, NoticeEntity> impl
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<NoticeEntity> selectByNotice(Integer ViewId) {
+        return noticeDao.selectByNotice(ViewId);
     }
 
 }
