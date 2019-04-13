@@ -27,10 +27,10 @@
 </head>
 <body class="hold-transition login-page" style="background-color: white">
 <div id="rrapp" v-cloak>
-    <button  type="button" class="btn">YY旅游系统</button>
+    <div  type="button" class="btn">YY旅游系统</div>
     <!-- /.login-logo -->
-    <button  type="button" class="btn" @click="loginOpen" style="float: right">登陆</button>
-    <button  type="button" class="btn" @click="regester"  style="float: right">注册</button>
+    <div  type="button" class="btn" @click="loginOpen" style="float: right">登陆</div>
+    <div  type="button" class="btn" @click="regester"  style="float: right">注册</div>
     <div class="layui-carousel" id="test1">
         <div carousel-item>
             <img src="${request.contextPath}/statics/picture/login.jpg" style="height:100%">
@@ -39,25 +39,25 @@
         </div>
     </div>
     <!-- /.login-box-body     登陆模态-->
-    <div id="login123" style="display: none;">
+    <div id="login123" style="display: none; width: 80%;margin: 24px auto;">
         <form class="layui-form" action="">
             <div v-if="error" class="alert alert-danger alert-dismissible">
                 <h4 style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" v-model="username" placeholder="账号">
+                <input type="text" class="form-control" v-model="username" placeholder="账号"  style="border-radius: 4px;">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" v-model="password" placeholder="密码">
+                <input type="password" class="form-control" v-model="password" placeholder="密码" style="border-radius: 4px;">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
+                <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码" style="border-radius: 4px;">
                 <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
+                <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode" style="display: inline-block;">
                 &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
             </div>
             <div class="row">
@@ -75,33 +75,33 @@
     <!--注册模态-->
     <div id="regist" style="display: none;">
         <form class="layui-form" action="">
-            <div class="form-group">
-                <div class="col-sm-2 control-label">用户名</div>
+            <div class="form-group" style="height: 35px;line-height: 35px; margin-top: 25px; ">
+                <div class="col-sm-2 control-label" style="text-align: right">用户名</div>
                 <div class="col-sm-10">
-                    <input type="text" id="uname" class="form-control" v-model="uname" placeholder="登录账号"/>
+                    <input type="text" id="uname" class="form-control" v-model="uname" placeholder="登录账号"  style="border-radius: 4px;"/>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">密码</div>
+            <div class="form-group" style="height: 35px;line-height: 35px;">
+                <div class="col-sm-2 control-label" style="text-align: right">密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="upassword" placeholder="密码"/>
+                    <input type="text" class="form-control" v-model="upassword" placeholder="密码"  style="border-radius: 4px;"/>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">邮箱</div>
+            <div class="form-group" style="height: 35px;line-height: 35px;">
+                <div class="col-sm-2 control-label" style="text-align: right">邮箱</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="uemail" placeholder="邮箱"/>
+                    <input type="text" class="form-control" v-model="uemail" placeholder="邮箱"  style="border-radius: 4px;"/>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">手机号</div>
+            <div class="form-group" style="height: 35px;line-height: 35px;">
+                <div class="col-sm-2 control-label" style="text-align: right">手机号</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="umobile" placeholder="手机号"/>
+                    <input type="text" class="form-control" v-model="umobile" placeholder="手机号"  style="border-radius: 4px;"/>
                 </div>
             </div>
         </form>
     </div>
-    <section id="content">
+    <section id="content" style="padding: 0 30px;">
         <!-- 精选start-->
         <section class="hemai_jx">
             <div class="jx_top">
@@ -128,30 +128,30 @@
                     </li>
                 </ul>
             </div>
-            <div class="jx_content">
+            <div class="jx_content" >
                 <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane" id="popularity">
+                <div class="tab-content" >
+                    <div role="tabpanel" class="tab-pane" id="popularity" style="padding: 10px 30px;">
 
-                        <button type="button" class="btn btn-primary btn-block btn-flat" @click="row_hot">查询</button>
+                        <button type="button" class="btn btn-primary btn-flat" @click="row_hot" style="border-radius: 10px;margin-bottom: 10px;">查询</button>
                         <div class="row" id="row_hot">
 
 
                             <!--旅游景点-->
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="newest">
+                    <div role="tabpanel" class="tab-pane" id="newest" style="padding: 10px 30px;">
                         <div class="row" id="row_time">
                             <!--当季旅游-->
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="theme">
-                        <strong>当月推荐</strong>
+                    <div role="tabpanel" class="tab-pane active" id="theme" style="padding: 10px 30px;">
+                        <strong style="margin-bottom: 10px;font-size: 16px;display: inline-block;">当月推荐</strong>
                         <div class="row" id="trip">
 
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="diy">
+                    <div role="tabpanel" class="tab-pane" id="diy" style="padding: 10px 30px;">
                         <div class="row" id="diyshow">
                             <!--我的定制-->
                         </div>

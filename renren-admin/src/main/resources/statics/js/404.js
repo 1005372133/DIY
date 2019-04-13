@@ -122,6 +122,7 @@ function addFavorite() {
         }
     });
     flag();
+    location.reload();
 }
 //查询评论
 function notice(){
@@ -148,6 +149,7 @@ function disFavorite() {
         }
     });
     flag();
+    location.reload();
 }
 function noticeOpen1() {
     layer.open({
@@ -168,8 +170,8 @@ function noticeOpen1() {
                 data: data,
                 dataType: "json",
                 success: function(result){
-                    alert("评论成功，请刷新查看")
                     layer.close(index);
+                    location.reload();
                 }
             });
         }
