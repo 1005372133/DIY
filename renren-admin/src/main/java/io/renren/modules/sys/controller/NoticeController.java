@@ -71,7 +71,10 @@ public class NoticeController {
     @PostMapping("/save")
     @ApiOperation(value = "新增评论")
   //  @RequiresPermissions("sys:notice:save")
-    public R save(@RequestBody NoticeEntity notice){
+    public R save(Integer viewId,String contest){
+        NoticeEntity notice =new NoticeEntity();
+        notice.setViewId(viewId);
+        notice.setContest(contest);
         notice.setTime(new Date());
         notice.setUserId(Integer.valueOf(LoginUserUtil.getUserId()));
         noticeService.insert(notice);

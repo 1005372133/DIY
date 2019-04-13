@@ -7,13 +7,19 @@
   <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/css/common.css">
   <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/css/route-detail.css">
+  <link rel="stylesheet" href="${request.contextPath}/statics/layui/css/layui.css" media="all">
+  <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
+  <script src="${request.contextPath}/statics/libs/vue.min.js"></script>
+  <script src="${request.contextPath}/statics/libs/bootstrap.min.js"></script>
+  <script src="${request.contextPath}/statics/libs/jquery.slimscroll.min.js"></script>
+  <script src="${request.contextPath}/statics/libs/fastclick.min.js"></script>
+  <script src="${request.contextPath}/statics/layer-v3.1.1/layer/layer.js"></script>
+  <script src="${request.contextPath}/statics/layui/layui.js"></script>
 </head>
 
-<body>
-<!--引入头部-->
-<div id="header"></div>
+<body class="hold-transition login-page">
 <!-- 详情 start -->
-<div class="wrap">
+<div class="rrapp" v-cloak>
   <div class="bread_box">
     <a href="login.html">首页</a>
     <span> &gt;</span>
@@ -48,7 +54,14 @@
     </div>
   </div>
   <div class="you_need_konw">
-    <span>评论</span>
+    <span><a id="noticeOpen1" class="btn" onclick="noticeOpen1()"><i class="glyphicon glyphicon-heart-empty"></i>写评论</a></span>
+    <div id="noticeOpen" style="display: none;">
+      <form class="layui-form" action="">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" id="contest" placeholder="评论">
+      </div>
+      </form>
+    </div>
     <div class="notice">
       <strong id="notice_user"></strong>
       <p class="pros_title" id="notice"></p>
@@ -88,160 +101,8 @@
 <script src="${request.contextPath}/statics/js/bootstrap.min.js"></script>
 <!--导入布局js，共享header和footer-->
 <script src="${request.contextPath}/statics/js/getParameter.js"></script>
+<script src="${request.contextPath}/statics/js/404.js?_${.now?long}"></script>
 <script>
-    var rid = getParameter("rid");
-    var disid = getParameter("disid");
-    $.get("sys/view/infos",{rid:rid},function (rid) {
-        $("#price").html("￥"+rid.view.price);
-        $("#rname").html(rid.view.name);
-        $("#rnamea").html(rid.view.name);
-        $("#routeIntroduce").html(rid.view.remarks);
-
-    /*    $("#favoriteCount").html("已收藏"+count+"次");*/
-
-
-        var ddstr = '<a class="up_img up_img_disable"></a>';
-        var dt = '<img alt="" class="big_img" src="'+rid.view.picture+'">';
-        $("#dt").html(dt);
-        for (var i = 0; i < 3; i++) {
-            var astr;
-            if(i >= 4){
-                astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'" style="display:none;">\n' +
-                    '                        <img src="'+rid.view.picture+'">\n' +
-                    '                    </a>';
-            }else{
-                astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'">\n' +
-                    '                        <img src="'+rid.view.picture+'">\n' +
-                    '                    </a>';
-            }
-            ddstr += astr;
-        }
-        ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
-        $("#dd").html(ddstr);
-        goImg();
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        goImg();
-        setInterval("auto_play()", 5000);
-    });
-    function goImg(){
-        //焦点图效果
-        //点击图片切换图片
-        $('.little_img').on('mousemove', function() {
-            $('.little_img').removeClass('cur_img');
-            var big_pic = $(this).data('bigpic');
-            $('.big_img').attr('src', big_pic);
-            $(this).addClass('cur_img');
-        });
-        //上下切换
-        var picindex = 0;
-        var nextindex = 4;
-        $('.down_img').on('click',function(){
-            var num = $('.little_img').length;
-            if((nextindex + 1) <= num){
-                $('.little_img:eq('+picindex+')').hide();
-                $('.little_img:eq('+nextindex+')').show();
-                picindex = picindex + 1;
-                nextindex = nextindex + 1;
-            }
-        });
-        $('.up_img').on('click',function(){
-            var num = $('.little_img').length;
-            if(picindex > 0){
-                $('.little_img:eq('+(nextindex-1)+')').hide();
-                $('.little_img:eq('+(picindex-1)+')').show();
-                picindex = picindex - 1;
-                nextindex = nextindex - 1;
-            }
-        });
-    }
-
-
-    //自动轮播方法
-    function auto_play() {
-        var cur_index = $('.prosum_left dd').find('a.cur_img').index();
-        cur_index = cur_index - 1;
-        var num = $('.little_img').length;
-        var max_index = 3;
-        if ((num - 1) < 3) {
-            max_index = num - 1;
-        }
-        if (cur_index < max_index) {
-            var next_index = cur_index + 1;
-            var big_pic = $('.little_img:eq(' + next_index + ')').data('bigpic');
-            $('.little_img').removeClass('cur_img');
-            $('.little_img:eq(' + next_index + ')').addClass('cur_img');
-            $('.big_img').attr('src', big_pic);
-        } else {
-            var big_pic = $('.little_img:eq(0)').data('bigpic');
-            $('.little_img').removeClass('cur_img');
-            $('.little_img:eq(0)').addClass('cur_img');
-            $('.big_img').attr('src', big_pic);
-        }
-    }
-    //预加载
-    $(function () {
-        notice();
-        flag();
-    });
-    //判断是否收藏
-    function flag() {
-        //发送请求，判断用户是否收藏过该线路
-        var rid = getParameter("rid");
-        $.get("sys/diy/flag",{rid:rid},function (flag) {
-            if(flag){
-                //用户已收藏
-                $("#favorite").addClass("already");
-                $("#favorite").attr("disabled","disabled");
-                $("#favorite").removeAttr("onclick");
-            }else{
-                //没有收藏
-                $("#disfavorite").addClass("already");
-                $("#disfavorite").attr("disabled","disabled");
-                $("#disfavorite").removeAttr("onclick");
-            }
-        });
-    }
-    //添加收藏
-    function addFavorite() {
-        var rid = getParameter("rid");
-        $.post("sys/diy/saveweb",{rid:rid},function (data) {
-            if (data) {
-                alert(data.msg);
-            }else{
-                alert(data.msg);
-            }
-        });
-        flag();
-    }
-    //查询评论
-    function notice(){
-        var rid = getParameter("rid");
-        var notice=""
-        $.post("sys/notice/selectByNotice",{viewId:rid},function (rid) {
-            for (var i = 0; i < rid.page.length; i++) {
-                notice+= '<div class="notice">\n'+
-                        '<strong id="notice_user">'+rid.page[i].userId+'说：</strong>\n'+
-                          '<p class="pros_title" >'+rid.page[i].contest+'</p>\n'+
-                '</div>';
-            }
-            $("#notice").html(notice);
-        });
-    }
-    //取消收藏
-    function disFavorite() {
-        var disid = getParameter("disid");
-        $.post("sys/diy/delete/"+disid,{},function (data) {
-            if (data) {
-                alert(data.msg);
-            }else{
-                alert(data.msg);
-            }
-        });
-        flag();
-    }
 
 </script>
 </body>
