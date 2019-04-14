@@ -122,8 +122,8 @@ $(function () {
  function row_hot(){
      var name = document.getElementById("name").value;
      var price = document.getElementById("price").value;
-     var area = document.getElementById("area").value;
-     $.post("sys/view/list",{name:name,price:price,area:area},function (list) {
+     var pricemax = document.getElementById("pricemax").value;
+     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax},function (list) {
          var row_hot ="";
          for (var i = 0; i < list.page.list.length; i++) {
              row_hot += '<div class="col-md-3">\n' +
@@ -176,7 +176,10 @@ $(function () {
      });
  }
  function trip(){
-     $.post("sys/view/list",{time:'2019-04'},function (list) {
+    debugger
+    var dateone =new Date().getMonth()+1;
+    dateone='2019-0'+dateone;
+     $.post("sys/view/list",{time:dateone},function (list) {
          var trip ="";
          for (var i = 0; i < list.page.list.length; i++) {
              trip += '<div class="col-md-3">\n' +
