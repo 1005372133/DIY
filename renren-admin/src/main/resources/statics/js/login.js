@@ -118,6 +118,7 @@ $(function () {
     row_hot();
     diyshow();
     trip();
+    row_time();
 })
  function row_hot(){
      var name = document.getElementById("name").value;
@@ -132,6 +133,7 @@ $(function () {
                  '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                  '                                    <div class="has_border">\n' +
                  '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                 '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
                  '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
                  '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
                  '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
@@ -140,23 +142,26 @@ $(function () {
                  '                            </div>';
          }
          $("#row_hot").html(row_hot);
-
-
-         var row_time ="";
-         for (var i = 0; i < list.page.list.length; i++) {
-             row_time += '<div class="col-md-3">\n' +
-                 '                                <a href="404.html?rid='+list.page.list[i].id+'">\n' +
-                 '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
-                 '                                    <div class="has_border">\n' +
-                 '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
-                 '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
-                 '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
-                 '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
-                 '                                    </div>\n' +
-                 '                                </a>\n' +
-                 '                            </div>';
-         }
-         $("#row_time").html(row_time);
+     });
+ }
+ function row_time(area) {
+     $.post("sys/view/list",{area:area},function (list) {
+     var row_time ="";
+     for (var i = 0; i < list.page.list.length; i++) {
+         row_time += '<div class="col-md-3">\n' +
+             '                                <a href="404.html?rid='+list.page.list[i].id+'">\n' +
+             '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
+             '                                    <div class="has_border">\n' +
+             '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+             '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
+             '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
+             '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
+             '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
+             '                                    </div>\n' +
+             '                                </a>\n' +
+             '                            </div>';
+     }
+     $("#row_time").html(row_time);
      });
  }
  function diyshow(){
@@ -168,6 +173,7 @@ $(function () {
                  '                                    <img src="'+selectByDiy.page.list[i].viewEntity.picture+'" alt="">\n' +
                  '                                    <div class="has_border">\n' +
                  '                                        <h3>'+selectByDiy.page.list[i].viewEntity.name+'</h3>\n' +
+                 '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
                  '                                        <div class="price">网付价<em>￥</em><strong>'+selectByDiy.page.list[i].viewEntity.price+'</strong><em>起</em></div>\n' +
                  '                                    </div>\n' +
                  '                                </a>\n' +
@@ -187,6 +193,7 @@ $(function () {
                  '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
                  '                                    <div class="has_border">\n' +
                  '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                 '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
                  '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
                  '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
                  '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +

@@ -6,7 +6,7 @@ $.get("sys/view/infos",{rid:rid},function (rid) {
     $("#rname").html(rid.view.name);
     $("#rnamea").html(rid.view.name);
     $("#routeIntroduce").html(rid.view.remarks);
-
+    $("#hotelName").html(rid.view.hotelName);
     /*    $("#favoriteCount").html("已收藏"+count+"次");*/
 
 
