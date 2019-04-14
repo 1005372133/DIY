@@ -16,6 +16,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="${request.contextPath}/statics/css/all-skins.min.css">
   <link rel="stylesheet" href="${request.contextPath}/statics/css/main.css">
+    <script src="${request.contextPath}/statics/layui/laydate/laydate.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -141,6 +142,9 @@
                         <div class="form-group col-sm-2">
                             <input type="text" class="form-control" id="pricemax" @keyup.enter="query" placeholder="最高价格">
                         </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" class="form-control" id="time1"  @keyup.enter="query" placeholder="时间"/>
+                        </div>
                         <button type="button" class="btn btn-primary btn-flat" @click="row_hot" style="border-radius: 10px;margin-bottom: 10px;">查询</button>
                         <div class="row" id="row_hot">
 
@@ -182,5 +186,6 @@
 <script src="${request.contextPath}/statics/layer-v3.1.1/layer/layer.js"></script>
 <script src="${request.contextPath}/statics/layui/layui.js"></script>
 <script src="${request.contextPath}/statics/js/login.js?_${.now?long}"></script>
+
 </body>
 </html>

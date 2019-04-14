@@ -123,7 +123,8 @@ $(function () {
      var name = document.getElementById("name").value;
      var price = document.getElementById("price").value;
      var pricemax = document.getElementById("pricemax").value;
-     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax},function (list) {
+     var time1 = document.getElementById("time1").value;
+     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax,time:time1},function (list) {
          var row_hot ="";
          for (var i = 0; i < list.page.list.length; i++) {
              row_hot += '<div class="col-md-3">\n' +
@@ -176,7 +177,6 @@ $(function () {
      });
  }
  function trip(){
-    debugger
     var dateone =new Date().getMonth()+1;
     dateone='2019-0'+dateone;
      $.post("sys/view/list",{time:dateone},function (list) {
@@ -198,6 +198,15 @@ $(function () {
      });
  }
 
+
+laydate.render({
+    elem: '#time1'//指定元素
+    ,type: 'month'
+    ,trigger: 'click'
+    ,done: function(value, date, endDate){
+        time1 = value;
+    }
+});
 /*轮播*/
 layui.use('carousel', function(){
     var carousel = layui.carousel;
