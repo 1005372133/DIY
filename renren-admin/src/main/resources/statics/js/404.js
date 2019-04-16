@@ -13,19 +13,20 @@ $.get("sys/view/infos",{rid:rid},function (rid) {
     var ddstr = '<a class="up_img up_img_disable"></a>';
     var dt = '<img alt="" class="big_img" src="'+rid.view.picture+'">';
     $("#dt").html(dt);
-    for (var i = 0; i < 3; i++) {
         var astr;
-        if(i >= 4){
-            astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'" style="display:none;">\n' +
-                '                        <img src="'+rid.view.picture+'">\n' +
-                '                    </a>';
-        }else{
             astr = '<a title="" class="little_img" data-bigpic="'+rid.view.picture+'">\n' +
                 '                        <img src="'+rid.view.picture+'">\n' +
                 '                    </a>';
-        }
+        astr += '<a title="" class="little_img" data-bigpic="'+rid.view.picture1+'">\n' +
+            '                        <img src="'+rid.view.picture1+'">\n' +
+            '                    </a>';
+    astr += '<a title="" class="little_img" data-bigpic="'+rid.view.picture2+'">\n' +
+        '                        <img src="'+rid.view.picture2+'">\n' +
+        '                    </a>';
+    astr += '<a title="" class="little_img" data-bigpic="'+rid.view.picture3+'">\n' +
+        '                        <img src="'+rid.view.picture3+'">\n' +
+        '                    </a>';
         ddstr += astr;
-    }
     ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
     $("#dd").html(ddstr);
     goImg();
