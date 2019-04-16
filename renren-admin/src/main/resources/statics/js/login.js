@@ -173,7 +173,6 @@ $(function () {
                  '                                    <img src="'+selectByDiy.page.list[i].viewEntity.picture+'" alt="">\n' +
                  '                                    <div class="has_border">\n' +
                  '                                        <h3>'+selectByDiy.page.list[i].viewEntity.name+'</h3>\n' +
-                 '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
                  '                                        <div class="price">网付价<em>￥</em><strong>'+selectByDiy.page.list[i].viewEntity.price+'</strong><em>起</em></div>\n' +
                  '                                    </div>\n' +
                  '                                </a>\n' +
