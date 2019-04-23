@@ -145,8 +145,7 @@ $(function () {
      });
  }
  function row_time(area) {
-     var line = document.getElementById("line").value;
-     $.post("sys/view/list",{area:area,line:line},function (list) {
+     $.post("sys/view/list",{area:area},function (list) {
      var row_time ="";
      for (var i = 0; i < list.page.list.length; i++) {
          row_time += '<div class="col-md-3">\n' +
@@ -165,6 +164,27 @@ $(function () {
      $("#row_time").html(row_time);
      });
  }
+function row_time2() {
+    var line = document.getElementById("line").value;
+    $.post("sys/view/list",{line:line},function (list) {
+        var row_time ="";
+        for (var i = 0; i < list.page.list.length; i++) {
+            row_time += '<div class="col-md-3">\n' +
+                '                                <a href="404.html?rid='+list.page.list[i].id+'">\n' +
+                '                                    <img src="'+list.page.list[i].picture+'" alt="">\n' +
+                '                                    <div class="has_border">\n' +
+                '                                        <h3>'+list.page.list[i].name+'</h3>\n' +
+                '                                        <em class="price"><strong>'+list.page.list[i].remarks+'</strong></em>\n' +
+                '                                        <h4>'+list.page.list[i].area+'</h4>\n' +
+                '                                        <h4>最佳时间：'+list.page.list[i].time+'</h4>\n' +
+                '                                        <div class="price">网付价<em>￥</em><strong>'+list.page.list[i].price+'</strong><em>起</em></div>\n' +
+                '                                    </div>\n' +
+                '                                </a>\n' +
+                '                            </div>';
+        }
+        $("#row_time").html(row_time);
+    });
+}
  function diyshow(){
      $.get("sys/diy/selectByDiy",{},function (selectByDiy) {
          var diyshow ="";

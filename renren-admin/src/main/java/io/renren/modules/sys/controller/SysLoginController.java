@@ -72,7 +72,6 @@ public class SysLoginController {
 	@PostMapping(value = "/sys/login")
 	@ApiOperation(value = "登陆")
 	public R login(String username, String password, String captcha) {
-		//	暂停使用验证码
 		String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
 		if(!captcha.equalsIgnoreCase(kaptcha)){
 			return R.error("验证码不正确");
