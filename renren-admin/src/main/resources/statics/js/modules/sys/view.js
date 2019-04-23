@@ -8,7 +8,7 @@ $(function () {
 			{ label: '地区', name: 'area', index: 'area', width: 80 },
 			{ label: '交通方式', name: 'transport', index: 'transport', width: 80 },
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
-/*			{ label: '酒店', name: 'hotelId', index: 'hotel_id', width: 80 },*/
+			{ label: '线路', name: 'line', index: 'line', width: 80 },
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
             { label: '时间', name: 'time', index: 'time', width: 80},
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 , hidden:true},
@@ -144,6 +144,7 @@ var vm = new Vue({
         det:{},
         dict: {},//字典
         Lists:{},//字典接受
+        Line:{},//线路接受
 		hotel:{},//酒店
 		Hotel:{},
         q:{
@@ -152,6 +153,7 @@ var vm = new Vue({
             area: null,
             hotelName: null,
             time: null,
+            line:null,
             pricemax:null,
         },
 	},
@@ -342,7 +344,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'name': vm.q.name,  'price': vm.q.price , 'area': vm.q.area, 'hotelName': vm.q.hotelName, 'time': vm.q.time, 'pricemax': vm.q.pricemax},
+                postData:{'name': vm.q.name,  'price': vm.q.price , 'area': vm.q.area, 'hotelName': vm.q.hotelName, 'line': vm.q.line, 'time': vm.q.time, 'pricemax': vm.q.pricemax},
                 page:page
             }).trigger("reloadGrid");
 		}

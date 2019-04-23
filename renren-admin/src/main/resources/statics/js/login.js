@@ -145,7 +145,8 @@ $(function () {
      });
  }
  function row_time(area) {
-     $.post("sys/view/list",{area:area},function (list) {
+     var line = document.getElementById("line").value;
+     $.post("sys/view/list",{area:area,line:line},function (list) {
      var row_time ="";
      for (var i = 0; i < list.page.list.length; i++) {
          row_time += '<div class="col-md-3">\n' +

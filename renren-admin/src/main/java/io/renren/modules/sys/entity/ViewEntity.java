@@ -191,6 +191,15 @@ public class ViewEntity implements Serializable {
 	private String picture1;
 	private String picture2;
 	private String picture3;
+	private String line;
+
+	public String getLine() {
+		return line;
+	}
+
+	public void setLine(String line) {
+		this.line = line;
+	}
 
 	public String getPicture1() {
 		return picture1;

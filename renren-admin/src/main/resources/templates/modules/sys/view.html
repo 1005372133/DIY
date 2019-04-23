@@ -33,6 +33,9 @@
             <div class="form-group col-sm-2">
                 <input type="text" class="form-control" id="time1" v-model="q.time" @keyup.enter="query" placeholder="时间"/>
             </div>
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.line" @keyup.enter="query" placeholder="线路">
+            </div>
             <a class="btn btn-default" @click="query">查询</a>
 			<#if shiro.hasPermission("sys:view:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
@@ -87,15 +90,15 @@
                     <input type="text" class="form-control" id="time" v-model="view.time" placeholder=""/>
                 </div>
             </div>
- <!--           <div class="form-group">
-                <div class="col-sm-2 control-label">酒店</div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">线路</div>
                 <div class="col-sm-10">
-                   &lt;!&ndash; <input type="text" class="form-control" v-model="view.hotelId" placeholder=""/>&ndash;&gt;
-                    <Select v-model="view.hotelId" class="form-control" clearable>
-                        <Option :value="item.id" v-for="item in hotel" :key="item.id">{{item.hotelName}}</Option>
+                   <!-- <input type="text" class="form-control" v-model="view.hotelId" placeholder=""/>-->
+                    <Select v-model="view.line" class="form-control" clearable>
+                        <Option :value="item.value" v-for="item in Lists" :key="item.value" v-if="item.type === 'line'">{{item.value}}</Option>
                     </Select>
                 </div>
-            </div>-->
+            </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">酒店名称</div>
                 <div class="col-sm-10">
@@ -194,12 +197,12 @@
                 <input type="text" class="form-control" v-model="det.price" placeholder=""/>
             </div>
         </div>
-<!--        <div class="form-group">
-            <div class="col-sm-2 control-label">酒店</div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">线路</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="det.hotelId" placeholder=""/>
+                <input type="text" class="form-control" v-model="det.line" placeholder=""/>
             </div>
-        </div>-->
+        </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">酒店名称</div>
             <div class="col-sm-10">

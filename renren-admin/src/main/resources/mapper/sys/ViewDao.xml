@@ -17,6 +17,7 @@
         <result property="picture1" column="picture1"/>
         <result property="picture2" column="picture2"/>
         <result property="picture3" column="picture3"/>
+        <result property="line" column="line"/>
     </resultMap>
     <select id="selectId" resultMap="viewMap" resultType="io.renren.modules.sys.entity.ViewEntity">
         select * from view where id=#{id}
