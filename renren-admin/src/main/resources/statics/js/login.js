@@ -1,6 +1,9 @@
 var vm = new Vue({
     el:'#rrapp',
     data:{
+        user:{
+            username:''
+        },
         q:{
             name: null,
             price: null,
@@ -59,6 +62,12 @@ var vm = new Vue({
         refreshCode: function(){
             this.src = "captcha.jpg?t=" + $.now();
         },
+        getUser: function(){
+            $.getJSON("sys/user/info?_"+$.now(), function(r){
+                vm.user = r.user;
+                localStorage.setItem("username","vm.user.username");
+            });
+        },
 
         //  登陆
         login: function (event) {
@@ -70,17 +79,15 @@ var vm = new Vue({
                 dataType: "json",
                 success: function(result){
                     if(result.code == 0){//登录成功
-                        console.log(result)
                         if (vm.username==='admin'){
                             parent.location.href ='index.html';
                         }
                         else {
-                            parent.location.href ='login.html';
+                            parent.location.href ='login1.html';
                         }
                     }else{
                         vm.error = true;
                         vm.errorMsg = result.msg;
-
                         vm.refreshCode();
                     }
                 }
@@ -98,7 +105,6 @@ var vm = new Vue({
                 btn: ['注册','取消'],
                 btn1: function (index) {
                     var data = "password=" + vm.upassword + "&username=" + vm.upassword+ "&email=" + vm.uemail+ "&mobile=" + vm.umobile;
-                    //  console.log(this.vm.uname)
                     $.ajax({
                         type: "PUT",
                         url: "sys/user/register",
@@ -119,13 +125,12 @@ $(function () {
     diyshow();
     trip();
     row_time();
+    vm.getUser();
 })
  function row_hot(){
      var name = document.getElementById("name").value;
-     var price = document.getElementById("price").value;
-     var pricemax = document.getElementById("pricemax").value;
-     var time1 = document.getElementById("time1").value;
-     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax,time:time1},function (list) {
+     var area = document.getElementById("area").value;
+     $.post("sys/view/list",{name:name,area:area},function (list) {
          var row_hot ="";
          for (var i = 0; i < list.page.list.length; i++) {
              row_hot += '<div class="col-md-3">\n' +
@@ -144,8 +149,8 @@ $(function () {
          $("#row_hot").html(row_hot);
      });
  }
- function row_time(area) {
-     $.post("sys/view/list",{area:area},function (list) {
+ function row_time() {
+     $.post("sys/view/list",{},function (list) {
      var row_time ="";
      for (var i = 0; i < list.page.list.length; i++) {
          row_time += '<div class="col-md-3">\n' +
@@ -165,8 +170,11 @@ $(function () {
      });
  }
 function row_time2() {
+    var price = document.getElementById("price").value;
+    var pricemax = document.getElementById("pricemax").value;
+    var time1 = document.getElementById("time1").value;
     var line = document.getElementById("line").value;
-    $.post("sys/view/list",{line:line},function (list) {
+    $.post("sys/view/list",{line:line,price:price,pricemax:pricemax,time:time1,},function (list) {
         var row_time ="";
         for (var i = 0; i < list.page.list.length; i++) {
             row_time += '<div class="col-md-3">\n' +
