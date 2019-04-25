@@ -306,8 +306,9 @@ var vm = new Vue({
                 data:	{Viewid:id},
                 success: function (r) {
                     if (r.code === 0) {
-						console.log(id)
-                    	alert("收藏成功")
+                        layer.alert('收藏成功', function(){
+                            location.reload();
+                        });
                     } else {
                         alert(r.msg);
                     }
