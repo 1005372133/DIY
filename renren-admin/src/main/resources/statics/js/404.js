@@ -8,6 +8,8 @@ $.get("sys/view/infos",{rid:rid},function (rid) {
     $("#routeIntroduce").html(rid.view.remarks);
     $("#hotelName").html(rid.view.hotelName);
     $("#line").html(rid.view.line);
+    $("#transport").html(rid.view.transport);
+    $("#time").html(rid.view.time);
     /*    $("#favoriteCount").html("已收藏"+count+"次");*/
 
 

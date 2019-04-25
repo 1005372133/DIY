@@ -90,7 +90,6 @@ var vm = new Vue({
                         vm.errorMsg = result.msg;
                         vm.refreshCode();
                     }
-                    vm.getUser();
                 }
             });
         },
@@ -126,6 +125,7 @@ $(function () {
     diyshow();
     trip();
     row_time();
+    vm.getUser();
 })
  function row_hot(){
      var name = document.getElementById("name").value;
