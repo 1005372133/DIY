@@ -44,6 +44,10 @@ public class SysPageController {
 	public String index1(){
 		return "index1";
 	}
+	@RequestMapping("login1.html")
+	public String login1(){
+		return "login1";
+	}
 
 	@RequestMapping("login.html")
 	public String login(){

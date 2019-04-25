@@ -1,6 +1,9 @@
 var vm = new Vue({
     el:'#rrapp',
     data:{
+        user:{
+            username:''
+        },
         q:{
             name: null,
             price: null,
@@ -59,6 +62,12 @@ var vm = new Vue({
         refreshCode: function(){
             this.src = "captcha.jpg?t=" + $.now();
         },
+        getUser: function(){
+            $.getJSON("sys/user/info?_"+$.now(), function(r){
+                vm.user = r.user;
+                localStorage.setItem("username","vm.user.username");
+            });
+        },
 
         //  登陆
         login: function (event) {
@@ -70,19 +79,18 @@ var vm = new Vue({
                 dataType: "json",
                 success: function(result){
                     if(result.code == 0){//登录成功
-                        console.log(result)
                         if (vm.username==='admin'){
                             parent.location.href ='index.html';
                         }
                         else {
-                            parent.location.href ='login.html';
+                            parent.location.href ='login1.html';
                         }
                     }else{
                         vm.error = true;
                         vm.errorMsg = result.msg;
-
                         vm.refreshCode();
                     }
+                    vm.getUser();
                 }
             });
         },
@@ -98,7 +106,6 @@ var vm = new Vue({
                 btn: ['注册','取消'],
                 btn1: function (index) {
                     var data = "password=" + vm.upassword + "&username=" + vm.upassword+ "&email=" + vm.uemail+ "&mobile=" + vm.umobile;
-                    //  console.log(this.vm.uname)
                     $.ajax({
                         type: "PUT",
                         url: "sys/user/register",
@@ -125,7 +132,8 @@ $(function () {
      var price = document.getElementById("price").value;
      var pricemax = document.getElementById("pricemax").value;
      var time1 = document.getElementById("time1").value;
-     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax,time:time1},function (list) {
+     var area = document.getElementById("area").value;
+     $.post("sys/view/list",{name:name,price:price,pricemax:pricemax,time:time1,area:area},function (list) {
          var row_hot ="";
          for (var i = 0; i < list.page.list.length; i++) {
              row_hot += '<div class="col-md-3">\n' +
