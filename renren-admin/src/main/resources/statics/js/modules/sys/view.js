@@ -148,6 +148,7 @@ var vm = new Vue({
 		hotel:{},//酒店
 		Hotel:{},
         q:{
+            transport: null,
             name: null,
             price: null,
             area: null,
@@ -345,7 +346,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'name': vm.q.name,  'price': vm.q.price , 'area': vm.q.area, 'hotelName': vm.q.hotelName, 'line': vm.q.line, 'time': vm.q.time, 'pricemax': vm.q.pricemax},
+                postData:{'name': vm.q.name,  'price': vm.q.price , 'area': vm.q.area, 'hotelName': vm.q.hotelName, 'line': vm.q.line, 'time': vm.q.time, 'pricemax': vm.q.pricemax,'transport': vm.q.transport},
                 page:page
             }).trigger("reloadGrid");
 		}

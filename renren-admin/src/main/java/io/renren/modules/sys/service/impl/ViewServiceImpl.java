@@ -26,6 +26,7 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
     public PageUtils queryPage(Map<String, Object> params) {
         String name = (String)params.get("name");
         String price = (String)params.get("price");
+        String transport = (String)params.get("transport");
         String area = (String)params.get("area");
         String time = (String)params.get("time");
         String pricemax = (String)params.get("pricemax");
@@ -41,6 +42,8 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
                         .lt(StringUtils.isNotBlank(pricemax),"price", pricemax)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(area),"area", area)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
+                        .like(StringUtils.isNotBlank(transport),"transport", transport)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(line),"line", line)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
