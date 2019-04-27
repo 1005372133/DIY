@@ -4,6 +4,7 @@ var contest = getParameter("contest");
 $.get("sys/view/infos",{rid:rid},function (rid) {
     $("#price").html("￥"+rid.view.price);
     $("#rname").html(rid.view.name);
+    $("#area").html(rid.view.area);
     $("#rnamea").html(rid.view.name);
     $("#routeIntroduce").html(rid.view.remarks);
     $("#hotelName").html(rid.view.hotelName);
