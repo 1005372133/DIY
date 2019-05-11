@@ -9,6 +9,7 @@ $(function () {
 			{ label: '交通方式', name: 'transport', index: 'transport', width: 80 },
 			{ label: '价格', name: 'price', index: 'Price', width: 80 },
 			{ label: '线路', name: 'line', index: 'line', width: 80 },
+            { label: '线路2', name: 'line2', index: 'line2', width: 80 },
 			{ label: '酒店名称', name: 'hotelName', index: 'hotel_name', width: 80 },
             { label: '时间', name: 'time', index: 'time', width: 80},
 			{ label: '图片', name: 'picture', index: 'picture', width: 80 , hidden:true},

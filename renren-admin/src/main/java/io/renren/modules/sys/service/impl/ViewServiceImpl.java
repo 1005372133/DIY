@@ -32,6 +32,7 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
         String pricemax = (String)params.get("pricemax");
         String hotelName = (String)params.get("hotelName");
         String line = (String)params.get("line");
+        String line2 = (String)params.get("line");
         Page<ViewEntity> page = this.selectPage(
                 new Query<ViewEntity>(params).getPage(),
                 new EntityWrapper<ViewEntity>()
@@ -47,6 +48,8 @@ public class ViewServiceImpl extends ServiceImpl<ViewDao, ViewEntity> implements
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(line),"line", line)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
+                       /* .like(StringUtils.isNotBlank(line2),"line2", line2)
+                        .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))*/
                         .like(StringUtils.isNotBlank(hotelName),"hotel_name", hotelName)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
                         .like(StringUtils.isNotBlank(time),"time", time)
